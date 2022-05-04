@@ -1,0 +1,422 @@
+@charset "UTF-8";
+*{
+    overflow: hidden;
+}
+#button{
+    text-align: center;
+    position: relative;
+    right: 33vw;
+}
+#plusH{
+    background-color: #0088d1;
+    height: 20vh;
+    width: 20vh;
+    border-radius: 20vh;
+    color: #ffffff;
+    font-size: 10vh;
+    border: 0px solid;
+    transition: all 0.2s;
+}
+#plusH:hover{
+    background-color: #00a6ff;
+    height: 20vh;
+    width: 20vh;
+    border-radius: 20vh;
+    color: #ffffff;
+    font-size: 10vh;
+    border: 0px solid;
+    cursor: pointer;
+}
+h1{
+    font-size: 5vh;
+}
+.bigtd{
+    font-size: 3.4vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 3.3vh;
+    padding-right: 3.3vh;
+    background-color: rgb(125, 190, 225);
+    border-radius: 10vh;
+}
+td{
+    border: 0.4vh solid #ffffff00;
+    border-collapse:collapse;
+    font-size: 3.4vh;
+    padding: 0.25vw;
+    padding-left: 0.4vw;
+    padding-right: 0.4vw;
+}
+.greentd{
+    background-color: rgb(125, 190, 225);
+    border-collapse:collapse;
+    font-size: 4vh;
+    padding: 0.25vw;
+    padding-left: 0.4vw;
+    padding-right: 0.4vw;
+    border-radius: 5vh;
+}
+
+td:hover{
+    cursor: pointer;
+}
+#elements{
+    white-space: nowrap;
+    overflow: scroll;
+    width: 20vw;
+    height: 100vh;
+    position: absolute;
+    left: 28vw;
+    top:0vh;
+}
+.label{
+    display: inline-block;
+    background-color: rgb(216, 216, 216);
+    border: 0px solid #000000; 
+    font-size: 5vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    padding-left: 8vh;
+    padding-right: 8vh;
+    border-radius: 1vh;
+    transition: all 0.2s;
+}
+.label:hover{
+    color: #fff;
+    background-color: rgb(159, 159, 159);
+    cursor: pointer;
+}
+#menu{
+    position: absolute;
+    top: 50vh;
+    left: 23vh;
+}
+#develop,#create{
+    display: none;
+}
+input:checked + label{
+    background-color: rgb(165, 222, 178);
+    display: inline-block;
+    border: 0px solid #000000; 
+    font-size: 5vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    padding-left: 8vh;
+    padding-right: 10vh;
+    border-radius: 1vh;
+
+}
+
+
+#developer{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 50vw;
+    top: 5vh;
+    display: none;
+}
+#creator{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 50vw;
+    top: 10vh;
+    display: none;
+}
+#suiso,#heriumu,#ritiumu,#berirumu,#houso,#tannso,#tisso,#sannso,#fusso,#neon{
+    background-color: rgb(125, 190, 225);
+}
+
+#toPNE{
+    position: absolute;
+    left: 0vw;
+    top: 30vh;
+    transition: all 0.2s;
+}
+#toPNE:hover{
+    filter: brightness(130%);
+    cursor: pointer;
+}
+#toEnergy{
+    transition: all 0.2s;
+}
+#toEnergy:hover{
+    filter: brightness(130%);
+    cursor: pointer;
+}
+#toAtom{
+    position: absolute;
+    left: 15vw;
+    top: 0vh;
+    transition: all 0.2s;
+}
+#toAtom:hover{
+    filter: brightness(130%);
+    cursor: pointer;
+}
+#toNeutron{
+    position: absolute;
+    left: 15vw;
+    top: 30vh;
+    transition: all 0.2s;
+}
+#toNeutron:hover{
+    filter: brightness(130%);
+    cursor: pointer;
+}
+#atomKsk{
+    position: absolute;
+    left: 30vw;
+    top: 0vh;
+    transition: all 0.2s;
+}
+#atomKsk:hover{
+    filter: brightness(130%);
+    cursor: pointer;
+}
+#PNE{
+    width: 22vw;
+    height: 32vh;
+    position: absolute;
+    overflow-x: scroll;
+    left: 48vw;
+    top: 68vh;
+}
+#autoAtom,#autoEnergy{
+    background-color: rgb(216, 216, 216);
+    border: 0px solid #000000; 
+    font-size: 5vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    padding-left: 8vh;
+    padding-right: 8vh;
+    border-radius: 1vh;
+    transition: all 0.2s;
+}
+#autoAtom:hover,#autoEnergy:hover{
+    color: #fff;
+    background-color: rgb(159, 159, 159);
+    cursor: pointer;
+}
+#autoEnergy{
+    position: absolute;
+    left: 0vw;
+    top: 30vh;
+}
+
+#autoAtoms,#autoEnergys{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 50vw;
+    top: 4vh;
+    display: none;
+}
+
+#back1,#back2{
+    background-color: rgb(216, 216, 216);
+    border: 0px solid #000000; 
+    font-size: 4vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 7vh;
+    padding-right: 7vh;
+    border-radius: 1vh;
+    transition: all 0.2s;
+}
+#back1:hover,#back2:hover{
+    color: #fff;
+    background-color: rgb(159, 159, 159);
+    cursor: pointer;
+}
+#addQty{
+    width: 40vw;
+    height: 50vh;
+    position: absolute;
+    overflow-x: scroll;
+    left: 60vw;
+    top: 70vh;
+}
+#addNum{
+    position: absolute;
+    top: 10vh;
+    right: 5vw;
+    border-radius: 1vh;
+    border: 0.7vh solid #57b3ff;
+    font-size: 5vh;
+    height: 10vh;
+    width: 25vw;
+    background-color: rgb(228, 228, 228);
+}
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance:textfield;
+}
+#plus{
+    background-color: #ff5858;
+    color: #fff;
+    font-size: 3vh;
+    width: 25vw;
+    height: 8vh;
+    border-radius: 1vh;
+    border: 0vh solid;
+    position: absolute;
+    right: 5vw;
+    bottom: 39vh;
+    transition: all 0.2s;
+}
+#plus:hover{
+    background-color: #ff8a8a;
+    cursor: pointer;
+}
+#minus{
+    background-color: #989898;
+    color: #fff;
+    font-size: 3vh;
+    width: 25vw;
+    height: 8vh;
+    border-radius: 1vh;
+    border: 0vh solid;
+    position: absolute;
+    right: 5vw;
+    top: 21vh;
+    transition: all 0.2s;
+}
+#minus:hover{
+    background-color: #7b82ff;
+    cursor: pointer;
+}
+#autoAtomScr{
+    overflow: scroll;
+    height: 50vh;
+}
+.autoAtomButton{
+    border: 0.6vh solid #ffffff;
+    background-color: #d0d0d0;
+    font-size: 4vh;
+}
+#autoEnergyScr{
+    overflow: scroll;
+    height: 50vh;
+}
+.autoEnergyButton{
+    border: 0.6vh solid #ffffff;
+    background-color: #d0d0d0;
+    font-size: 4vh;
+}
+#hoverInfo{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+    font-size: 3vh;
+    background-color: #5ca9b0;
+    width: 15vw;
+    color: #fff;
+    border-radius: 1vh;
+    line-height: 3vh;
+    z-index: 1000;
+    font-weight: 600;
+    overflow-wrap: break-word;
+    margin-bottom: 0vh;
+    padding: 0vw;
+}
+#info1,#info2,#info3,#info4,#info5,#info6,#info7,#info8{
+    margin: 0.3vh;
+}
+#Name{
+    font-size: 4vh;
+    line-height: 4vh;
+    margin-bottom: 0vh;
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+}
+#selectAtomHTMLDiv{
+    position: absolute;
+    top: 36vh;
+    left: 0vw;
+    background-color: #d5d5d5;
+    width: 27vw;
+}
+#selectAtomHTML{
+    color: rgb(0, 0, 0);
+    font-size: 3vh;
+    font-weight: 700;
+    margin: 2vh;
+}
+#infomation{
+    background-color: #3e3e3e;
+    color: #fff;
+    font-size: 5vh;
+    height: 8vh;
+    width: 8vh;
+    border: 0px solid;
+    border-radius: 8vh;
+    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+    font-weight: 900;
+    position: absolute;
+    top: 3vh;
+    left: 3vw;
+    transition: all 0.2s;
+}
+#infomation:hover{
+    background-color: #747474;
+    cursor: pointer;
+}
+#closeInfomation{
+    display: none;
+    background-color: #3e3e3e;
+    color: #fff;
+    font-size: 5vh;
+    height: 8vh;
+    width: 8vh;
+    border: 0px solid;
+    border-radius: 8vh;
+    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+    font-weight: 900;
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    transition: all 0.2s;
+    z-index: 20000000;
+}
+#closeInfomation:hover{
+    background-color: #747474;
+    cursor: pointer;
+}
+#infomationDiv{
+    background-color: rgba(204, 204, 204, 0.625);
+    z-index: 10000000;
+    position: absolute;
+    top: 3vh;
+    left: 3vw;
+    width: 0vw;
+    height: 0vh;
+    border-radius: 4vh;
+    border: 0px soild;
+    transition: all 0.2s;
+}
+#infomationScr{
+    background-color: rgb(255, 255, 255);
+    overflow: scroll;
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    width: 93vw;
+    height: 93vh;
+    text-align: center;
+}
+h2{
+    font-size: 4vh;
+}
+.infoPTag{
+    font-size: 3vh;
+    font-weight: 600;
+    margin: 2vh;
+}
+#creatingNow{
+    color: #ff5858;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>元素クリッカー</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+    <div id="divId"> 
+    
+        <div id="button">
+            <h1 id="atomQty">0</h1>
+            <button id="plusH">H</button>
+        </div>
+    
+        <br>
+    
+        <div id="menu">
+            <input type="radio" id="develop" name="radiobutton">
+            <label for="develop" class="label">開発</label><br><br><br><br>
+            <input type="radio" id="create" name="radiobutton">
+            <label for="create" class="label">製造</label>
+        </div>
+    
+        <div id="elements">
+            <table id="tablee">
+                <tr>
+                    <td>1</td>
+                    <td id="H" class="bigtd">H</td>
+                    <td id="HNum">0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td id="He" class="bigtd">?</td>
+                    <td id="HeNum">0</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td id="Li" class="bigtd">?</td>
+                    <td id="LiNum">0</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td id="Be" class="bigtd">?</td>
+                    <td id="BeNum">0</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td id="B" class="bigtd">?</td>
+                    <td id="BNum">0</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td id="C" class="bigtd">?</td>
+                    <td id="CNum">0</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td id="N" class="bigtd">?</td>
+                    <td id="NNum">0</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td id="O" class="bigtd">?</td>
+                    <td id="ONum">0</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td id="F" class="bigtd">?</td>
+                    <td id="FNum">0</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td id="Ne" class="bigtd">?</td>
+                    <td id="NeNum">0</td>
+                </tr>
+            
+            </table>
+        </div>
+        <div id="hoverInfo">
+            <p id="Name">水素</p>
+            <p id="info1">元素記号:H</p>
+            <p id="info2">陽子数&nbsp;&nbsp;&nbsp;:1</p>
+            <p id="info3">電子数&nbsp;&nbsp;&nbsp;:1</p>
+            <p id="info4">中性子数:0</p>
+            <p id="info5"></p>
+            <p id="info6"></p>
+            <p id="info7"></p>
+            <p id="info8"></p>
+        </div>
+        <div id="developer" style="display: inline-block;">
+            <div style="width:25vh; height:25vh; background-image:url(質量エネルギー化装置.svg); background-size:100%;" id="toEnergy" ></div>
+            <div style="width:25vh; height:25vh; background-image:url(原子分解装置.svg); background-size:100%;"       id="toPNE" ></div>
+            <div style="width:25vh; height:25vh; background-image:url(粒子合成装置.svg); background-size:100%;"       id="toAtom" ></div>
+            <div style="width:25vh; height:25vh; background-image:url(粒子中性子化装置.svg); background-size:100%;"    id="toNeutron" ></div>
+            <div style="width:25vh; height:25vh; background-image:url(原子加速装置.svg); background-size:100%;"       id="atomKsk" ></div>
+        </div>
+        <div id="creator">
+            <button id="autoAtom">自動生産</button>
+            <button id="autoEnergy">自動発電</button>
+        </div>
+        <div id="autoAtoms">
+            <div id="autoAtomScr">
+                <table>
+                    <tr>
+                        <td class="autoAtomButton" id="addH">水素カーソル</td>
+                        <td id="addHQty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="addH2">水電解装置</td>
+                        <td id="addH2Qty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="adda">原子誘引装置</td>
+                        <td id="addaQty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="addHe">ヘリウムタービン</td>
+                        <td id="addHeQty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="addLi">リチウム生成装置</td>
+                        <td id="addLiQty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="addBe">ベリリウム複製装置</td>
+                        <td id="addBeQty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="addBe2">ベリリウム鉱山</td>
+                        <td id="addBe2Qty" class="autoAtomButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoAtomButton" id="addC">有機発生装置</td>
+                        <td id="addCQty" class="autoAtomButton">0</td>
+                    </tr>
+                </table>
+            </div>
+            <button id="back1">戻る</button>
+        </div>
+        <div id="autoEnergys">
+            <div id="autoEnergyScr">
+                <table>
+                    <tr>
+                        <td class="autoEnergyButton" id="addE1">炭素太陽光発電装置</td>
+                        <td id="addE1Qty" class="autoEnergyButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoEnergyButton" id="addE2">酸化エネルギー発電装置</td>
+                        <td id="addE2Qty" class="autoEnergyButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoEnergyButton" id="addE3">炭素燃焼発電装置</td>
+                        <td id="addE3Qty" class="autoEnergyButton">0</td>
+                    </tr>
+                    <tr>
+                        <td class="autoEnergyButton" id="addE4">常温核融合発電装置</td>
+                        <td id="addE4Qty" class="autoEnergyButton">0</td>
+                    </tr>
+                </table>
+            </div>
+            <button id="back2">戻る</button>
+        </div>
+        <div id="PNE">
+            <table id="table2">
+                <tr>
+                    <td class="greentd" id="p">陽子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(p)</td>
+                    <td class="greentd" id="pNum">100</td>
+                </tr>
+                <tr>
+                    <td class="greentd" id="n">中性子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(n)</td>
+                    <td class="greentd" id="nNum">0</td>
+                </tr>
+                <tr>
+                    <td class="greentd" id="e">電子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(e)</td>
+                    <td class="greentd" id="eNum">0</td>
+                </tr>
+                <tr>
+                    <td class="greentd">エネルギー(E)</td>
+                    <td class="greentd" id="ENum">0</td>
+                </tr>
+            </table>
+        </div>
+        <div id="addQty">
+            <input type="text" value="1" id="addNum" class="no-spin" >
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+        </div>
+        <div id="selectAtomHTMLDiv">
+            <p id="selectAtomHTML">選択中:</p>
+        </div>
+        <button id="infomation">i</button>
+        <div id="infomationDiv">
+            <button id="closeInfomation">×</button>
+            <div id="infomationScr">
+                <h2>このサイトについて<span id="creatingNow">-まだ(2022/5/4)作成中です-</span></h2>
+                <p class="infoPTag">このサイトはhtml,css,javascriptのみで作られた元素クリッカー(?)です</p>
+                <p class="infoPTag">左上にあるクリックするとと水素が発生する不思議なボタンとその他の不思議な装置で</p>
+                <p class="infoPTag">10種類の元素を作り出すことができます</p>
+                <p class="infoPTag"></p>
+                <p class="infoPTag"></p>
+                <p class="infoPTag"></p>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </div>
+    </body>
+</html>
