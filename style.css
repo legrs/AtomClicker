@@ -404,10 +404,10 @@ input:checked + label{
     background-color: #3e3e3e;
     color: #fff;
     font-size: 5vh;
-    height: 8vh;
-    width: 8vh;
+    height: 9vh;
+    width: 9vh;
     border: 0px solid;
-    border-radius: 8vh;
+    border-radius: 9vh;
     font-family: 'Oleo Script Swash Caps', cursive;
     font-weight: 900;
     position: absolute;
