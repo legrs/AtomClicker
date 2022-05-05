@@ -4,8 +4,9 @@
 }
 #button{
     text-align: center;
-    position: relative;
-    right: 33vw;
+    position: absolute;
+    top: 13vh;
+    left: 12vw;
 }
 #plusH{
     background-color: #0088d1;
@@ -27,8 +28,33 @@
     border: 0px solid;
     cursor: pointer;
 }
-h1{
+#atomQtyDiv{
+    position: absolute;
+    top: 0vh;
+    left: 0vh;
+    background-color: #7b7b7b;
+    width: 60vh;
+    height: 13vh;
+    text-align: center;
+    margin: 0vh;
+}
+#atomQty{
+    color: rgb(255, 255, 255);
     font-size: 5vh;
+}
+#ApS{
+    position: absolute;
+    top: 35vh;
+    left: 1vw;
+    font-size: 3vh;
+    margin: 0vh;
+}
+#EpS{
+    position: absolute;
+    top: 40vh;
+    left: 1vw;
+    font-size: 3vh;
+    margin: 0vh;
 }
 .bigtd{
     font-size: 3.4vh;
@@ -40,7 +66,7 @@ h1{
     border-radius: 10vh;
 }
 td{
-    border: 0.4vh solid #ffffff00;
+    border: 0.4vh solid #f7f7f700;
     border-collapse:collapse;
     font-size: 3.4vh;
     padding: 0.25vw;
@@ -61,6 +87,7 @@ td:hover{
     cursor: pointer;
 }
 #elements{
+    background-color: #f7f7f7;
     white-space: nowrap;
     overflow: scroll;
     width: 20vw;
@@ -176,12 +203,15 @@ input:checked + label{
     cursor: pointer;
 }
 #PNE{
+    background-color: #f7f7f7;
     width: 22vw;
     height: 32vh;
     position: absolute;
     overflow-x: scroll;
     left: 48vw;
     top: 68vh;
+    z-index: 100;
+    white-space: nowrap;
 }
 #autoAtom,#autoEnergy{
     background-color: rgb(216, 216, 216);
@@ -235,7 +265,8 @@ input:checked + label{
     height: 50vh;
     position: absolute;
     overflow-x: scroll;
-    left: 60vw;
+    z-index: 10;
+    left: 63vw;
     top: 70vh;
 }
 #addNum{
@@ -318,7 +349,7 @@ input:checked + label{
     color: #fff;
     border-radius: 1vh;
     line-height: 3vh;
-    z-index: 1000;
+    z-index: 9999999999;
     font-weight: 600;
     overflow-wrap: break-word;
     margin-bottom: 0vh;
@@ -336,9 +367,8 @@ input:checked + label{
 }
 #selectAtomHTMLDiv{
     position: absolute;
-    top: 36vh;
+    top: 66.5vh;
     left: 0vw;
-    background-color: #d5d5d5;
     width: 27vw;
 }
 #selectAtomHTML{
@@ -361,6 +391,7 @@ input:checked + label{
     top: 3vh;
     left: 3vw;
     transition: all 0.2s;
+    box-shadow: 0px  0px 1vh 1vh #fff;
 }
 #infomation:hover{
     background-color: #747474;
@@ -382,6 +413,7 @@ input:checked + label{
     left: 0vw;
     transition: all 0.2s;
     z-index: 20000000;
+    box-shadow: 0px  0px 1vh 1vh #fff;
 }
 #closeInfomation:hover{
     background-color: #747474;
@@ -419,4 +451,27 @@ h2{
 }
 #creatingNow{
     color: #ff5858;
+}
+#link{
+    color: #00a6ff;
+    font-size: 3vh;
+    font-weight: 600;
+    margin: 0vh;
+    padding: 0vh;
+}
+#toridasi{
+    position: absolute;
+    top: 40vh;
+    left: 35vw;
+    background-color: rgb(134, 134, 134);
+    color: #fff;
+    border: 0px solid;
+    border-radius: 1vh;
+    width: 10vw;
+    height: 8vh;
+    font-size: 4vh;
+    font-weight: 600;
+}
+#toridasi:hover{
+    cursor: pointer;
 }

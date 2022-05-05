@@ -17,6 +17,11 @@ let atomSelectHTML = document.querySelector('#selectAtomHTML'); //html表示側�
 let infomationBtn = document.querySelector('#infomation'); //このサイトについてを表示するボタン
 let infomation = document.querySelector('#infomationDiv');
 let closeInfo = document.querySelector('#closeInfomation');
+let autoAtomInner = document.querySelector('#autoAtomScr');
+let autoEnergyInner = document.querySelector('#autoEnergyScr');
+let ApSHTML = document.querySelector('#ApS');
+let EpSHTML = document.querySelector('#EpS');
+let toridasiHTML = document.querySelector('#toridasi');
 
 let hoverInfo = document.querySelector('#hoverInfo'); //カーソルを合わせて出てくる説明
 let name = document.querySelector('#Name'); //説明の名前
@@ -28,6 +33,23 @@ let info5 = document.querySelector('#info5'); //説明
 let info6 = document.querySelector('#info6'); //説明
 let info7 = document.querySelector('#info7'); //説明
 let info8 = document.querySelector('#info8'); //説明
+
+let autoAtomQtyHTMLArray=[
+document.querySelector('#addHQty'),
+document.querySelector('#addH2Qty'),
+document.querySelector('#addaQty'),
+document.querySelector('#addHeQty'),
+document.querySelector('#addLiQty'),
+document.querySelector('#addBeQty'),
+document.querySelector('#addBe2Qty'),
+document.querySelector('#addCQty')
+];
+let autoEnergyQtyHTMLArray=[
+document.querySelector('#addE1Qty'),
+document.querySelector('#addE2Qty'),
+document.querySelector('#addE3Qty'),
+document.querySelector('#addE4Qty')
+];
 
 let pNum = document.querySelector('#pNum');  //粒子の数(html表示用)
 let nNum= document.querySelector('#nNum'); //｜
@@ -61,7 +83,7 @@ let Ne= document.querySelector('#Ne');
 let atomArray     =    ['H','He','Li','Be','B','C','N','O','F','Ne']; //元素全部
 let atomName      =    ['水素','ヘリウム','リチウム','ベリリウム',' ホウ素','炭素','窒素','酸素','フッ素','ネオン'];
 
-let developerName =    ['質量エネルギー化装置','粒子合成装置','原子加速装置','分子分解装置','粒子中性子化装置'];
+let developerName =    ['質量エネルギー化装置','粒子合成装置','原子加速装置','原子分解装置','粒子中性子化装置'];
 let developerArray=    ['toEnergy',       'toAtom',   'atomKsk',  'toPNE',    'toNeutron'];
 let upgradedDeveloper = [0,0,0,0,0]; 
 let maxUpgradeDeveloper=[3,2,2,1,1];
@@ -100,7 +122,64 @@ let developerInnerAtomQty = [
                             [0],
                             [0]
                             ];
-
+let autoAtomArray = ['addH','addH2','adda','addHe','addLi','addBe','addBe2','addC'];
+let autoAtomName = ['水素カーソル','水電解装置','水素誘引装置','ヘリウムタービン','リチウム生成装置','ベリリウム複製装置','ベリリウム鉱山','有機発生装置'];
+let autoAtomQtyArray = [0,0,0,0,0,0,0,0];
+let autoAtomPerSecond = ['H','H','H','He','Li','Be','Be','C'];
+let autoAtomPerSecondQty = [0.1,1,10,0.1,0.1,0.1,1,1];
+let autoAtomcost = [
+                    ['H'],
+                    ['H'],
+                    ['H'],
+                    ['H','He'],
+                    ['H','Li'],
+                    ['H','Be'],
+                    ['H','Li','Be',],
+                    ['H','He','Li','B','C']
+                    ];
+let autoAtomcostQty=[
+                    [15],
+                    [200],
+                    [2000],
+                    [200,5],
+                    [800,5],
+                    [2000,5],
+                    [3000,100,10],
+                    [4000,1000,100,10,5]
+                    ];
+let autoAtomcostQtyNow =[
+                        [15],
+                        [100],
+                        [2000],
+                        [200,5],
+                        [800,5],
+                        [2000,5],
+                        [3000,100,10],
+                        [4000,1000,100,10,5]
+                        ];
+let autoEnergyArray = ['addE1','addE2','addE3','addE4'];
+let autoEnergyName = ['炭素太陽光発電装置','結合エネルギー発電装置','炭素燃焼発電装置','常温核融合発電装置'];
+let autoEnergyQtyArray = [0,0,0,0];
+let autoEnergyPerSecond = ['E','E','E','E'];
+let autoEnergyPerSecondQty= [1,5,8,20];
+let autoEnergycost = [
+                    ['Li','C'],
+                    ['H','Li','O'],
+                    ['H','C','O'],
+                    ['H','Li','Be','O']
+                    ];
+let autoEnergycostQty=[
+                    [3000,10],
+                    [5000,1000,10],
+                    [4000,100,100],
+                    [1000,1000,1000,200]
+                    ];
+let autoEnergycostQtyNow=[
+                        [3000,10],
+                        [5000,1000,10],
+                        [4000,100,100],
+                        [1000,1000,1000,100]
+                        ];
 let electronArray  = [1,2,3,4,5,6,7,8,9,10];
 let protonArray   =  [1,2,3,4,5,6,7,8,9,10];
 let neutronArray =   [0,2,4,5,5,6,7,8,10,10];
@@ -129,6 +208,20 @@ let intervalFunction;
 let fiveSecond = false; //plus minusをクリックしてから5秒立ったか
 let plusMinusElement; 
 let plusQtyplusedQty = 0;
+let ApS = [0,0,0,0,0,0,0,0,0,0] //元素毎秒
+let EpS = 0;
+let addHOK = false;
+let addHeOK = false;
+let addLiOK = false;
+let addBeOK = false;
+let addBOK = false;
+let addCOK = false;
+let addNOK = false;
+let addOOK = false;
+let addFOK = false;
+let addNeOK = false;
+let toridasi = 'OFF';
+
 
 
 function ischeck(){  //切り替え用
@@ -139,7 +232,6 @@ function ischeck(){  //切り替え用
         autoEnergys.style.display = "none";
         autoAtom.style.display = "none";
         autoEnergy.style.display = "none";
-        console.log('check');
     }else{
         developer.style.display ="none";
     }
@@ -150,7 +242,6 @@ function ischeck(){  //切り替え用
         autoEnergys.style.display = "none";
         autoAtom.style.display = "block";
         autoEnergy.style.display = "block";
-        console.log('checkkkkk');
     }else{
         creator.style.display = "none";
     }
@@ -169,13 +260,13 @@ function atomselect(atomNum){ //元素選択
     if(atomNum == -100){
         
     }else{     //クリックだった時」
-        if(selectAtom == 'p' || selectAtom == 'n' || selectAtom == 'e'){
-            pneselect(-100);
-        }else{
-
-        }
+        
         if(foundAtom.includes(atomNum.target.id)){
+            if(selectAtom == 'p' || selectAtom == 'n' || selectAtom == 'e'){
+            pneselect(-100);
+            }
             selectAtom = atomNum.target.id;
+            
         }
         switch(selectAtom){
             case 'H':
@@ -220,23 +311,30 @@ function pneselect(pneNum){ //粒子選択
     if(pneNum == -100){
         
     }else{ //クリックだった時
-        if(selectAtom == 'p' || selectAtom == 'n' || selectAtom == 'e'){
-
-        }else{
-            atomselect(-100);
-        }
         if(pneNum.target.id == 'p'){
             if(pNum.innerHTML != '0'){
+                if(selectAtom == 'p' || selectAtom == 'n' || selectAtom == 'e'){
+                }else{
+                    atomselect(-100);
+                }
                 selectAtom = 'p';
             }
         }
         if(pneNum.target.id == 'n'){
             if(nNum.innerHTML != '0'){
+                if(selectAtom == 'p' || selectAtom == 'n' || selectAtom == 'e'){
+                }else{
+                    atomselect(-100);
+                }
                 selectAtom = 'n';
             }
         }
         if(pneNum.target.id == 'e'){
             if(eNum.innerHTML != '0'){
+                if(selectAtom == 'p' || selectAtom == 'n' || selectAtom == 'e'){
+                }else{
+                    atomselect(-100);
+                }
                 selectAtom = 'e';
             }
         }
@@ -256,12 +354,25 @@ function pneselect(pneNum){ //粒子選択
     atomSelectHTML.innerHTML = `選択中:${selectAtom}`;
 }
 function addAtom(){ //合計元素数を合わせる
-    atomQty.innerHTML = HQty + HeQty + LiQty + BeQty + BQty + CQty + NQty + OQty + FQty + NeQty;
+    atomQty.innerHTML = toSI(Math.round(HQty) + Math.round(HeQty) + Math.round(LiQty) + Math.round(BeQty) + Math.round(BQty) + Math.round(CQty) + Math.round(NQty) + Math.round(OQty) + Math.round(FQty) + Math.round(NeQty));
+    HNum.innerHTML  = toSI(Math.round(HQty));
+    HeNum.innerHTML = toSI(Math.round(HeQty));
+    LiNum.innerHTML = toSI(Math.round(LiQty));
+    BeNum.innerHTML = toSI(Math.round(BeQty));
+    BNum.innerHTML  = toSI(Math.round(BQty));
+    CNum.innerHTML  = toSI(Math.round(CQty));
+    NNum.innerHTML  = toSI(Math.round(NQty));
+    ONum.innerHTML  = toSI(Math.round(OQty));
+    FNum.innerHTML  = toSI(Math.round(FQty));
+    NeNum.innerHTML = toSI(Math.round(NeQty));
+    pNum.innerHTML  = toSI(Math.round(proton));
+    nNum.innerHTML  = toSI(Math.round(neutron));
+    eNum.innerHTML  = toSI(Math.round(electron));
+    ENum.innerHTML  = `${toSI(Math.round(energy))}E`;
 }
 function addh(){ //水素追加
     HQty++;
-    HNum.innerHTML = HQty;
-    addAtom();
+    addAtom('H');
 }
 function selectAuto(select){   //製造画面の切り替え
     if(select.target.id == 'autoAtom'){
@@ -388,6 +499,191 @@ function closeInfomation(){
     }, 200);
     
 }
+function autoAtomClick(element){
+    if(autoAtomArray.includes(element.target.id)){ //アップグレードがクリックされていた時   番号→autoAtomArray.indexOf(element.target.id)
+        let canLevelUp = 0;
+        for(let i=0;i<autoAtomcost[autoAtomArray.indexOf(element.target.id)].length;i++){ //コストの元素の数の長さだけ繰り返す
+            switch(autoAtomcost[autoAtomArray.indexOf(element.target.id)][i]){  //それぞれの元素で対応
+                case 'H':
+                    if(autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] <= HQty){   //水素の数が足りていた時
+                        canLevelUp++;
+                    }
+                    break;
+                case 'He':
+                    if(autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] <= HeQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'Li':
+                    if(autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] <= LiQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'Be':
+                    if(autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] <= BeQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'B':
+                    if(autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] <= BQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'C':
+                    if(autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] <= CQty){   
+                        canLevelUp++;
+                    }
+                    break;
+            }
+        }
+        if(canLevelUp == autoAtomcost[autoAtomArray.indexOf(element.target.id)].length){ //LevelUp可能だった時
+            for(let i=0;i<autoAtomcost[autoAtomArray.indexOf(element.target.id)].length;i++){
+                switch(autoAtomcost[autoAtomArray.indexOf(element.target.id)][i]){
+                    case 'H':  //必要元素が水素だった時
+                        HQty = HQty - autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'He':
+                        HeQty = HeQty - autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'Li':
+                        LiQty = LiQty - autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'Be':
+                        BeQty = BeQty - autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'B':
+                        BQty = BQty - autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'C':
+                        CQty = CQty - autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                }
+            }
+            autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)]++;
+
+            for(let i=0;i<autoAtomcost[autoAtomArray.indexOf(element.target.id)].length;i++){
+                autoAtomcostQtyNow[autoAtomArray.indexOf(element.target.id)][i] = Math.round(autoAtomcostQty[autoAtomArray.indexOf(element.target.id)][i] * (1.15 ** autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)]));
+            }
+            autoAtomInfo(element.target.id);
+            
+            switch(autoAtomPerSecond[autoAtomArray.indexOf(element.target.id)]){
+                case 'H':
+                    ApS[0] = Number((autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)] * autoAtomPerSecondQty[autoAtomArray.indexOf(element.target.id)]).toFixed(1));
+                    break;
+                case 'He':
+                    ApS[1] = Number((autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)] * autoAtomPerSecondQty[autoAtomArray.indexOf(element.target.id)]).toFixed(1));
+                    break;
+                case 'Li':
+                    ApS[2] = Number((autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)] * autoAtomPerSecondQty[autoAtomArray.indexOf(element.target.id)]).toFixed(1));
+                    break;
+                case 'Be':
+                    ApS[3] = Number((autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)] * autoAtomPerSecondQty[autoAtomArray.indexOf(element.target.id)]).toFixed(1));
+                    break;
+                case 'C':
+                    ApS[5] = Number((autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)] * autoAtomPerSecondQty[autoAtomArray.indexOf(element.target.id)]).toFixed(1));
+                    break;
+            }
+            autoAtomQtyHTMLAarray[autoAtomArray.indexOf(element.target.id)].innerHTML = toSI(autoAtomQtyArray[autoAtomArray.indexOf(element.target.id)]);
+            ApSHTML.innerHTML = `元素毎秒(ApS):${toSI(ApS[0]+ApS[1]+ApS[2]+ApS[3]+ApS[4]+ApS[5]+ApS[6]+ApS[7]+ApS[8]+ApS[9])}`;
+        }
+        
+    }
+}
+function autoEnergyClick(element){
+    if(autoEnergyArray.includes(element.target.id)){ //アップグレードがクリックされていた時   番号→autoAtomArray.indexOf(element.target.id)
+        console.log('a');
+        let canLevelUp = 0;
+        for(let i=0;i<autoEnergycost[autoEnergyArray.indexOf(element.target.id)].length;i++){ //コストの元素の数の長さだけ繰り返す
+            switch(autoEnergycost[autoEnergyArray.indexOf(element.target.id)][i]){  //それぞれの元素で対応
+                case 'H':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= HQty){   //水素の数が足りていた時
+                        canLevelUp++;
+                    }
+                    break;
+                case 'He':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= HeQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'Li':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= LiQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'Be':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= BeQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'B':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= BQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'C':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= CQty){   
+                        canLevelUp++;
+                    }
+                    break;
+                case 'O':
+                    if(autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] <= OQty){   
+                        canLevelUp++;
+                    }
+                    break;
+            }
+        }
+        if(canLevelUp == autoEnergycost[autoEnergyArray.indexOf(element.target.id)].length){ //LevelUp可能だった時
+            for(let i=0;i<autoEnergycost[autoEnergyArray.indexOf(element.target.id)].length;i++){
+                switch(autoEnergycost[autoEnergyArray.indexOf(element.target.id)][i]){
+                    case 'H':
+                        HQty = HQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        ENum.innerHTML
+                        break;
+                    case 'He':
+                        HeQty = HeQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'Li':
+                        LiQty = LiQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'Be':
+                        BeQty = BeQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'B':
+                        BQty = BQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'C':
+                        CQty = CQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                    case 'O':
+                        OQty = OQty - autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i];
+                        addAtom();
+                        break;
+                }
+            }
+            autoEnergyQtyArray[autoEnergyArray.indexOf(element.target.id)]++;
+
+            for(let i=0;i<autoEnergycost[autoEnergyArray.indexOf(element.target.id)].length;i++){
+                autoEnergycostQtyNow[autoEnergyArray.indexOf(element.target.id)][i] = Math.round(autoEnergycostQty[autoEnergyArray.indexOf(element.target.id)][i] * (1.15 ** autoEnergyQtyArray[autoEnergyArray.indexOf(element.target.id)]));
+            }
+            autoEnergyInfo(element.target.id);
+            EpS = Number((autoEnergyQtyArray[autoEnergyArray.indexOf(element.target.id)] * autoEnergyPerSecondQty[autoEnergyArray.indexOf(element.target.id)]).toFixed(1));
+            autoEnergyQtyHTMLArray[autoEnergyArray.indexOf(element.target.id)].innerHTML = toSI(autoEnergyQtyArray[autoEnergyArray.indexOf(element.target.id)]);
+            EpSHTML.innerHTML = `エネルギー毎秒(EpS):${toSI(EpS)}`;
+        }
+        
+    }
+}
 
 
 function foundAtomInfo(element){ //発見済み元素の説明出す
@@ -485,12 +781,31 @@ function developerInfo(element){ //開発の説明出す
     }
     
 }
-function autoAtomInfo(element){
-    name.innerHTML  = '';
-    info1.innerHTML = '';
-    info2.innerHTML = '';
-    info3.innerHTML = '';
-    info4.innerHTML = '';
+function autoAtomInfo(element){ //自動生産の説明出す
+    let createNeedAtom = '';
+    name.innerHTML  = autoAtomName[autoAtomArray.indexOf(element)];
+    for(let i = 0;i<autoAtomcost[autoAtomArray.indexOf(element)].length;i++){
+        createNeedAtom = `${createNeedAtom} ${autoAtomcost[autoAtomArray.indexOf(element)][i]} ${toSI(autoAtomcostQtyNow[autoAtomArray.indexOf(element)][i])},`;
+    }
+    info1.innerHTML = `作成必要元素:`;
+    info2.innerHTML = createNeedAtom;
+    info3.innerHTML = '毎秒生産:';
+    info4.innerHTML = `${autoAtomPerSecond[autoAtomArray.indexOf(element)]} ${autoAtomPerSecondQty[autoAtomArray.indexOf(element)]}`;
+    info5.innerHTML = '';
+    info6.innerHTML = '';
+    info7.innerHTML = '';
+    info8.innerHTML = '';
+}
+function autoEnergyInfo(element){ //自動生産の説明出す
+    let createNeedAtom = '';
+    name.innerHTML  = autoEnergyName[autoEnergyArray.indexOf(element)];
+    for(let i = 0;i<autoEnergycost[autoEnergyArray.indexOf(element)].length;i++){
+        createNeedAtom = `${createNeedAtom} ${autoEnergycost[autoEnergyArray.indexOf(element)][i]} ${toSI(autoEnergycostQtyNow[autoEnergyArray.indexOf(element)][i])},`;
+    }
+    info1.innerHTML = `作成必要元素:`;
+    info2.innerHTML = createNeedAtom;
+    info3.innerHTML = '毎秒生産:';
+    info4.innerHTML = `${autoEnergyPerSecond[autoEnergyArray.indexOf(element)]} ${autoEnergyPerSecondQty[autoEnergyArray.indexOf(element)]}`;
     info5.innerHTML = '';
     info6.innerHTML = '';
     info7.innerHTML = '';
@@ -498,16 +813,54 @@ function autoAtomInfo(element){
 }
 
 
+function toSI(Num){
+    if(String(Num).length > 24){
+        return `${(Num / 1000000000000000000000000).toFixed(3)}Y`;
+    }else{
+        if(String(Num).length > 21){
+            return `${(Num / 1000000000000000000000).toFixed(3)}Z`;
+        }else{
+            if(String(Num).length > 18){
+                return `${(Num / 1000000000000000000).toFixed(3)}E`;
+            }else{
+                if(String(Num).length > 15){
+                    return `${(Num / 1000000000000000).toFixed(3)}P`;
+                }else{
+                    if(String(Num).length > 12){
+                        return `${(Num / 1000000000000).toFixed(3)}T`;
+                    }else{
+                        if(String(Num).length > 9){
+                            return `${(Num / 1000000000).toFixed(3)}G`;
+                        }else{
+                            if(String(Num).length > 6){
+                                return `${(Num / 1000000).toFixed(3)}M`;
+                            }else{
+                                if(String(Num).length > 3){
+                                    return `${(Num / 1000).toFixed(3)}k`;
+                                }else{
+                                    return `${Num}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
 plusH.addEventListener('click',addh);
 
 autoAtom.addEventListener('click',selectAuto);
 autoEnergy.addEventListener('click',selectAuto);
+
 
 back1.addEventListener('click',back);
 back2.addEventListener('click',back);
 
 radio1.addEventListener('click',ischeck); //切り
 radio2.addEventListener('click',ischeck); //   替え用
+radio1.dispatchEvent(new Event('click'));
 
 H.addEventListener('click',atomselect); //元素選択
 He.addEventListener('click',atomselect); //元素選択
@@ -623,15 +976,36 @@ document.addEventListener('mouseover',(element) =>{ //カーソル合わせる�
             info7.innerHTML = '';
             info8.innerHTML = '';
             break;
-        case '':
-        case '':
+        case 'atomQty':
+            hoverInfo.style.display = 'block';
+            name.innerHTML = '合計元素数';
+            info1.innerHTML = '';
+            info2.innerHTML = '';
+            info3.innerHTML = '';
+            info4.innerHTML = '';
+            info5.innerHTML = '';
+            info6.innerHTML = '';
+            info7.innerHTML = '';
+            info8.innerHTML = '';
+            break;
+        case 'toridasi':
+            hoverInfo.style.display = 'block';
+            name.innerHTML = '取り出し';
+            info1.innerHTML = 'オンにしている状態で開発装置をクリックすると';
+            info2.innerHTML = '開発装置の中身を取り出します';
+            info3.innerHTML = `現在:${toridasi}`;
+            info4.innerHTML = '';
+            info5.innerHTML = '';
+            info6.innerHTML = '';
+            info7.innerHTML = '';
+            info8.innerHTML = '';
+            break;
         case '':
         case '':
         case '':
         case '':
         default:
             hoverInfo.style.display = 'none';
-            //console.log(element.target.id); 
     }
 });
 document.addEventListener('mousemove',(event) => { //説明が画面の外に出ないようにする
@@ -657,5 +1031,32 @@ developer.oncontextmenu = function (element) { //開発の右クリックで処�
 document.oncontextmenu = function () { //右クリックメニューを出さない
 	return false;
 };
+document.getElementsByTagName('html')[0].oncontextmenu = function () {
+    return false;
+}
 infomationBtn.addEventListener('click',showInfomation);
 closeInfo.addEventListener('click',closeInfomation);
+autoAtomInner.addEventListener('click',autoAtomClick);
+autoEnergyInner.addEventListener('click',autoEnergyClick);
+//developer.addEventListener('click',selectDev);
+
+document.addEventListener('keydown',() =>{
+    console.log(document.activeElement);
+    if(document.activeElement.id == 'plusH'){
+        plusH.blur();
+    }
+});
+setInterval(()=>{
+    HQty = HQty + ApS[0] / 100;
+    HeQty = HeQty + ApS[1] / 100;
+    LiQty = LiQty + ApS[2] / 100;
+    BeQty = BeQty + ApS[3] / 100;
+    BQty = BQty + ApS[4] / 100;
+    CQty = CQty + ApS[5] / 100;
+    NQty = NQty + ApS[6] / 100;
+    OQty = OQty + ApS[7] / 100;
+    FQty = FQty + ApS[8] / 100;
+    NeQty = NeQty + ApS[9] / 100;
+    energy = energy + EpS / 100;
+    addAtom();
+},10);

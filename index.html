@@ -8,12 +8,17 @@
 </head>
     <body>
     <div id="divId"> 
-    
-        <div id="button">
+        <div id="atomQtyDiv">
             <h1 id="atomQty">0</h1>
+        </div>
+        
+        <div id="button">
+            
+            
             <button id="plusH">H</button>
         </div>
-    
+        <h2 id="ApS">元素毎秒(ApS):0</h2>
+        <h2 id="EpS">エネルギー毎秒(EpS):0</h2>
         <br>
     
         <div id="menu">
@@ -95,6 +100,7 @@
             <div style="width:25vh; height:25vh; background-image:url(粒子合成装置.svg); background-size:100%;"       id="toAtom" ></div>
             <div style="width:25vh; height:25vh; background-image:url(粒子中性子化装置.svg); background-size:100%;"    id="toNeutron" ></div>
             <div style="width:25vh; height:25vh; background-image:url(原子加速装置.svg); background-size:100%;"       id="atomKsk" ></div>
+            <button id="toridasi">取り出し</button>
         </div>
         <div id="creator">
             <button id="autoAtom">自動生産</button>
@@ -147,7 +153,7 @@
                         <td id="addE1Qty" class="autoEnergyButton">0</td>
                     </tr>
                     <tr>
-                        <td class="autoEnergyButton" id="addE2">酸化エネルギー発電装置</td>
+                        <td class="autoEnergyButton" id="addE2">結合エネルギー発電装置</td>
                         <td id="addE2Qty" class="autoEnergyButton">0</td>
                     </tr>
                     <tr>
@@ -166,19 +172,19 @@
             <table id="table2">
                 <tr>
                     <td class="greentd" id="p">陽子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(p)</td>
-                    <td class="greentd" id="pNum">100</td>
+                    <td id="pNum">0</td>
                 </tr>
                 <tr>
                     <td class="greentd" id="n">中性子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(n)</td>
-                    <td class="greentd" id="nNum">0</td>
+                    <td id="nNum">0</td>
                 </tr>
                 <tr>
                     <td class="greentd" id="e">電子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(e)</td>
-                    <td class="greentd" id="eNum">0</td>
+                    <td id="eNum">0</td>
                 </tr>
                 <tr>
                     <td class="greentd">エネルギー(E)</td>
-                    <td class="greentd" id="ENum">0</td>
+                    <td id="ENum">0</td>
                 </tr>
             </table>
         </div>
@@ -195,11 +201,37 @@
             <button id="closeInfomation">×</button>
             <div id="infomationScr">
                 <h2>このサイトについて<span id="creatingNow">-まだ(2022/5/4)作成中です-</span></h2>
-                <p class="infoPTag">このサイトはhtml,css,javascriptのみで作られた元素クリッカー(?)です</p>
-                <p class="infoPTag">左上にあるクリックするとと水素が発生する不思議なボタンとその他の不思議な装置で</p>
-                <p class="infoPTag">10種類の元素を作り出すことができます</p>
-                <p class="infoPTag"></p>
-                <p class="infoPTag"></p>
+                <p class="infoPTag" style="display: inline;">このサイトは</p>
+                <a href="https://legrs.github.io/about.html"  target= _blank rel="noopener" id="link">legrs</a>
+                <p class="infoPTag" style="display: inline;">がgithubで公開した元素クリッカー(?)です</p>
+                <p class="infoPTag">このサイトはhtml,css,javascriptで作られています</p>
+                <p class="infoPTag">左上にあるクリックすると水素が発生する不思議なボタンとその他の不思議な装置で</p>
+                <p class="infoPTag">10種類の元素を作り出すゲームです</p>
+                <p class="infoPTag">パソコン用であり、それ以外の端末にはまだ非対応です</p>
+                <p class="infoPTag">パソコンであっても、動作確認をしていない環境があるので動作しない可能性もあったり、</p>
+                <p class="infoPTag">環境が正しくても、不具合が発生したりする可能性があります</p>
+                <p class="infoPTag">不具合が発生したら拡張機能を全てオフするなど、いろいろ試してみてください</p>
+                <p class="infoPTag" style="display: inline;">不具合の報告などは</p>
+                <a href="https://github.com/legrs/legrs.github.io/issues/1"  target= _blank rel="noopener" id="link">Github Issues</a>
+                <p class="infoPTag" style="display: inline;">(githubアカウントは作成してください)</p>
+                <p class="infoPTag">(まだ技術力などが低いためバグに対応できない可能性があります)</p>
+                <p class="infoPTag">機能などについてはこれから増やしていくつもりです</p>
+                <p class="infoPTag">元素は元素記号で表し、陽子はp,電子はe,中性子はn,エネルギーはEで表します</p>
+                <p class="infoPTag">1000以上の数字はSI接頭語を使って表します</p>
+                <p class="infoPTag">元素、粒子の単位は全て"個"です</p>
+                <p class="infoPTag">エネルギーの単位は特に定義があるわけではなく、自然にするためにつけたものです</p>
+                <p class="infoPTag">説明が必要なものはカーソルを合わせると説明が出てきます</p>
+                <p class="infoPTag">このサイトは気まぐれで更新されます</p><br>
+                <p class="infoPTag">ヘリウム50個作成までのチュートリアル</p><br><br>
+                <p class="infoPTag">1:まず左上の水素ボタンをクリックして水素を100個ほど発生させる</p>
+                <p class="infoPTag">2:製造画面の自動生産から水素カーソルや水電解装置などを作成したり水素ボタンをクリックしたりして</p>
+                <p class="infoPTag">とりあえず水素をたくさん生産する</p>
+                <p class="infoPTag">3:たくさん生産した水素を使い質量エネルギー化装置,粒子合成装置,原子分解装置を作成</p>
+                <p class="infoPTag">4:水素を選択し、開発画面の質量エネルギー化装置を左クリックで水素4000個ぐらい投入(１度に投入する数は左下から変更可能)</p>
+                <p class="infoPTag">5:右クリックで加工しエネルギーを生産</p>
+                <p class="infoPTag">6:原子分解装置に水素を100個ぐらい投入し右クリックで粒子に変換</p>
+                <p class="infoPTag">7:粒子合成装置で陽子50個,電子50個を投入し右クリックで中性子50個を生成</p>
+                <p class="infoPTag">8:陽子,電子,中性子をそれぞれ50個ずつ入れて右クリックでヘリウム50個を合成</p>
                 <p class="infoPTag"></p>
             </div>
         </div>
