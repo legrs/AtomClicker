@@ -1,6 +1,7 @@
 @charset "UTF-8";
 *{
     overflow: hidden;
+    font-family: "SourceHanCodeJP-Regular"; 
 }
 #button{
     text-align: center;

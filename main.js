@@ -684,6 +684,66 @@ function autoEnergyClick(element){
         
     }
 }
+function selectDev(element){
+    if(developerArray.includes(element.target.id)){
+        if( developerInnerAtom[developerArray.indexOf(element)] == ''){ //中身がない時
+            if(upgradedDeveloper[developerArray.indexOf(element)] == 0){ //作成済みでないとき
+                info1.innerHTML = '未作成';
+                info2.innerHTML = `作成必要元素:`;
+                for(let i = 0;i<developerNeedAtom[developerArray.indexOf(element)].length;i++){
+                    createNeedAtom = `${createNeedAtom} ${developerNeedAtom[developerArray.indexOf(element)][i]} ${developerNeedAtomQty[developerArray.indexOf(element)][i]}個`;
+                }
+                info3.innerHTML = createNeedAtom;
+            }else{                                //作成済みな時
+                info1.innerHTML = `Lv.${upgradedDeveloper[developerArray.indexOf(element)]}`;
+                if(upgradedDeveloper[developerArray.indexOf(element)] != maxUpgradeDeveloper[developerArray.indexOf(element)]){ 
+                    info2.innerHTML = `アップグレード必要元素:`;
+                    for(let i = 0;i<developerNeedAtom[developerArray.indexOf(element)].length;i++){
+                        createNeedAtom = `${createNeedAtom} ${developerNeedAtom[developerArray.indexOf(element)][i]} ${developerNeedAtomQty[developerArray.indexOf(element)][i]}個`;
+                    }
+                    info3.innerHTML = createNeedAtom;
+                }else{   //最大なとき
+                    info2.innerHTML = ``;
+                    
+                }
+                info6.innerHTML = `元素を選択して左クリックで投入`
+            }
+            
+            
+        }else{  // 中身があるとき
+            info6.innerHTML = '右クリックで処理'
+            for(let i = 0;i<developerInnerAtom[developerArray.indexOf(element)].length;i++){
+                innerAtom = `${innerAtom} ${developerInnerAtom[developerArray.indexOf(element)][i]} ${developerInnerAtomQty[developerArray.indexOf(element)][i]}個`;
+            }
+            info4.innerHTML = `中身:${innerAtom}`;
+            switch(element){
+                case 'toEnergy':
+                    switch(upgradedDeveloper[developerArray.indexOf(element)]){
+                        case 1:
+                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] / 10} E 生産`;
+                            break;
+                        case 2:
+                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0]} E 生産`;
+                            break;
+                        case 3:
+                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] * 10} E 生産`;
+                            break;
+                    }
+                    break;
+                case 'toAtom':
+                    switch(upgradedDeveloper[developerArray.indexOf(element)]){
+                        case 1:
+                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] * 10} E 消費`;
+                            break;
+                        case 2:
+                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0]} E 消費`;
+                            break;
+                    }
+                    break;
+            }
+        }
+    }
+}
 
 
 function foundAtomInfo(element){ //発見済み元素の説明出す
@@ -719,64 +779,66 @@ function developerInfo(element){ //開発の説明出す
     info6.innerHTML = '';
     info7.innerHTML = '';
     info8.innerHTML = '';
-    if(upgradedDeveloper[upgradedDeveloper.indexOf(element)] >= 1){ //developerArray.indexOf(element)
-
-    }else{
-        name.innerHTML  = developerName[developerArray.indexOf(element)];
-        
-        
-        
-        info5.innerHTML = `説明:${developerExplain[developerArray.indexOf(element)]}`;
-        
-        if( developerInnerAtom[developerArray.indexOf(element)] == ''){ //中身がない時
-
-            if(upgradedDeveloper[developerArray.indexOf(element)] == 0){ //作成済みでないとき
-                info1.innerHTML = '未作成';
-                info2.innerHTML = `作成必要元素:`;
-            }else{                                //作成済みな時
-                info1.innerHTML = `Lv.${upgradedDeveloper[developerArray.indexOf(element)]}`;
-                if(upgradedDeveloper[developerArray.indexOf(element)] != maxUpgradedDeveloper[developerArray.indexOf(element)]){
-                    info2.innerHTML = `アップグレード必要元素:`;
-                }
-                info6.innerHTML = `元素を選択して左クリックで投入`
-            }
-            
+    name.innerHTML  = developerName[developerArray.indexOf(element)];
+    
+    
+    
+    info5.innerHTML = `説明:${developerExplain[developerArray.indexOf(element)]}`;
+    
+    if( developerInnerAtom[developerArray.indexOf(element)] == ''){ //中身がない時
+        if(upgradedDeveloper[developerArray.indexOf(element)] == 0){ //作成済みでないとき
+            info1.innerHTML = '未作成';
+            info2.innerHTML = `作成必要元素:`;
             for(let i = 0;i<developerNeedAtom[developerArray.indexOf(element)].length;i++){
                 createNeedAtom = `${createNeedAtom} ${developerNeedAtom[developerArray.indexOf(element)][i]} ${developerNeedAtomQty[developerArray.indexOf(element)][i]}個`;
             }
             info3.innerHTML = createNeedAtom;
-        }else{  // 中身があるとき
-            info6.innerHTML = '右クリックで処理'
-            for(let i = 0;i<developerInnerAtom[developerArray.indexOf(element)].length;i++){
-                innerAtom = `${innerAtom} ${developerInnerAtom[developerArray.indexOf(element)][i]} ${developerInnerAtomQty[developerArray.indexOf(element)][i]}個`;
+        }else{                                //作成済みな時
+            info1.innerHTML = `Lv.${upgradedDeveloper[developerArray.indexOf(element)]}`;
+            if(upgradedDeveloper[developerArray.indexOf(element)] != maxUpgradeDeveloper[developerArray.indexOf(element)]){ 
+                info2.innerHTML = `アップグレード必要元素:`;
+                for(let i = 0;i<developerNeedAtom[developerArray.indexOf(element)].length;i++){
+                    createNeedAtom = `${createNeedAtom} ${developerNeedAtom[developerArray.indexOf(element)][i]} ${developerNeedAtomQty[developerArray.indexOf(element)][i]}個`;
+                }
+                info3.innerHTML = createNeedAtom;
+            }else{   //最大なとき
+                info2.innerHTML = ``;
+                
             }
-            info4.innerHTML = `中身:${innerAtom}`;
-            switch(element){
-                case 'toEnergy':
-                    switch(upgradedDeveloper[developerArray.indexOf(element)]){
-                        case 1:
-                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] / 10} E 生産`;
-                            break;
-                        case 2:
-                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0]} E 生産`;
-                            break;
-                        case 3:
-                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] * 10} E 生産`;
-                            break;
-                    }
-                    break;
-                case 'toAtom':
-                    switch(upgradedDeveloper[developerArray.indexOf(element)]){
-                        case 1:
-                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] * 10} E 消費`;
-                            break;
-                        case 2:
-                            info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0]} E 消費`;
-                            break;
-                    }
-                    break;
-
-            }
+            info6.innerHTML = `元素を選択して左クリックで投入`
+        }
+        
+        
+    }else{  // 中身があるとき
+        info6.innerHTML = '右クリックで処理'
+        for(let i = 0;i<developerInnerAtom[developerArray.indexOf(element)].length;i++){
+            innerAtom = `${innerAtom} ${developerInnerAtom[developerArray.indexOf(element)][i]} ${developerInnerAtomQty[developerArray.indexOf(element)][i]}個`;
+        }
+        info4.innerHTML = `中身:${innerAtom}`;
+        switch(element){
+            case 'toEnergy':
+                switch(upgradedDeveloper[developerArray.indexOf(element)]){
+                    case 1:
+                        info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] / 10} E 生産`;
+                        break;
+                    case 2:
+                        info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0]} E 生産`;
+                        break;
+                    case 3:
+                        info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] * 10} E 生産`;
+                        break;
+                }
+                break;
+            case 'toAtom':
+                switch(upgradedDeveloper[developerArray.indexOf(element)]){
+                    case 1:
+                        info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0] * 10} E 消費`;
+                        break;
+                    case 2:
+                        info7.innerHTML = `${developerInnerAtomQty[developerArray.indexOf(element)][0]} E 消費`;
+                        break;
+                }
+                break;
         }
     }
     
@@ -811,90 +873,7 @@ function autoEnergyInfo(element){ //自動生産の説明出す
     info7.innerHTML = '';
     info8.innerHTML = '';
 }
-
-
-function toSI(Num){
-    if(String(Num).length > 24){
-        return `${(Num / 1000000000000000000000000).toFixed(3)}Y`;
-    }else{
-        if(String(Num).length > 21){
-            return `${(Num / 1000000000000000000000).toFixed(3)}Z`;
-        }else{
-            if(String(Num).length > 18){
-                return `${(Num / 1000000000000000000).toFixed(3)}E`;
-            }else{
-                if(String(Num).length > 15){
-                    return `${(Num / 1000000000000000).toFixed(3)}P`;
-                }else{
-                    if(String(Num).length > 12){
-                        return `${(Num / 1000000000000).toFixed(3)}T`;
-                    }else{
-                        if(String(Num).length > 9){
-                            return `${(Num / 1000000000).toFixed(3)}G`;
-                        }else{
-                            if(String(Num).length > 6){
-                                return `${(Num / 1000000).toFixed(3)}M`;
-                            }else{
-                                if(String(Num).length > 3){
-                                    return `${(Num / 1000).toFixed(3)}k`;
-                                }else{
-                                    return `${Num}`;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-    }
-}
-plusH.addEventListener('click',addh);
-
-autoAtom.addEventListener('click',selectAuto);
-autoEnergy.addEventListener('click',selectAuto);
-
-
-back1.addEventListener('click',back);
-back2.addEventListener('click',back);
-
-radio1.addEventListener('click',ischeck); //切り
-radio2.addEventListener('click',ischeck); //   替え用
-radio1.dispatchEvent(new Event('click'));
-
-H.addEventListener('click',atomselect); //元素選択
-He.addEventListener('click',atomselect); //元素選択
-Li.addEventListener('click',atomselect); //元素選択
-Be.addEventListener('click',atomselect); //元素選択
-B.addEventListener('click',atomselect); //元素選択
-C.addEventListener('click',atomselect); //元素選択
-N.addEventListener('click',atomselect); //元素選択
-O.addEventListener('click',atomselect); //元素選択
-F.addEventListener('click',atomselect); //元素選択
-Ne.addEventListener('click',atomselect); //元素選択
-
-p.addEventListener('click',pneselect);  //粒子選択
-n.addEventListener('click',pneselect); //粒子選択
-e.addEventListener('click',pneselect); //粒子選択
-
-document.addEventListener('keydown',numcheck); //数字が不正でないか
-
-plus.addEventListener('mousedown',plusminusdown);  //一度に追加する数の変更ボタンがクリック開始
-plus.addEventListener('mouseup',() => {   //一度に追加する数の変更ボタンがクリック終了
-    click = false;
-    stopInterval();
-    plusQtyplusQty = 1;
-    plusQtyplusedQty = 0;
-});  
-minus.addEventListener('mousedown',plusminusdown);  //一度に追加する数の変更ボタンがクリック開始
-minus.addEventListener('mouseup',() => {  //一度に追加する数の変更ボタンがクリック終了
-    click = false; 
-    stopInterval();
-    plusQtyplusQty = 1;
-    plusQtyplusedQty = 0;
-}); 
-
-document.addEventListener('mouseover',(element) =>{ //カーソル合わせると説明が出てくるように
+function hoverInfoON(element){
     switch(element.target.id){
         case 'H':
         case 'He':
@@ -1007,7 +986,90 @@ document.addEventListener('mouseover',(element) =>{ //カーソル合わせる�
         default:
             hoverInfo.style.display = 'none';
     }
-});
+}
+
+function toSI(Num){
+    if(String(Num).length > 24){
+        return `${(Num / 1000000000000000000000000).toFixed(3)}Y`;
+    }else{
+        if(String(Num).length > 21){
+            return `${(Num / 1000000000000000000000).toFixed(3)}Z`;
+        }else{
+            if(String(Num).length > 18){
+                return `${(Num / 1000000000000000000).toFixed(3)}E`;
+            }else{
+                if(String(Num).length > 15){
+                    return `${(Num / 1000000000000000).toFixed(3)}P`;
+                }else{
+                    if(String(Num).length > 12){
+                        return `${(Num / 1000000000000).toFixed(3)}T`;
+                    }else{
+                        if(String(Num).length > 9){
+                            return `${(Num / 1000000000).toFixed(3)}G`;
+                        }else{
+                            if(String(Num).length > 6){
+                                return `${(Num / 1000000).toFixed(3)}M`;
+                            }else{
+                                if(String(Num).length > 3){
+                                    return `${(Num / 1000).toFixed(3)}k`;
+                                }else{
+                                    return `${Num}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+plusH.addEventListener('click',addh);
+
+autoAtom.addEventListener('click',selectAuto);
+autoEnergy.addEventListener('click',selectAuto);
+
+
+back1.addEventListener('click',back);
+back2.addEventListener('click',back);
+
+radio1.addEventListener('click',ischeck); //切り
+radio2.addEventListener('click',ischeck); //   替え用
+radio1.dispatchEvent(new Event('click'));
+
+H.addEventListener('click',atomselect); //元素選択
+He.addEventListener('click',atomselect); //元素選択
+Li.addEventListener('click',atomselect); //元素選択
+Be.addEventListener('click',atomselect); //元素選択
+B.addEventListener('click',atomselect); //元素選択
+C.addEventListener('click',atomselect); //元素選択
+N.addEventListener('click',atomselect); //元素選択
+O.addEventListener('click',atomselect); //元素選択
+F.addEventListener('click',atomselect); //元素選択
+Ne.addEventListener('click',atomselect); //元素選択
+
+p.addEventListener('click',pneselect);  //粒子選択
+n.addEventListener('click',pneselect); //粒子選択
+e.addEventListener('click',pneselect); //粒子選択
+
+document.addEventListener('keydown',numcheck); //数字が不正でないか
+
+plus.addEventListener('mousedown',plusminusdown);  //一度に追加する数の変更ボタンがクリック開始
+plus.addEventListener('mouseup',() => {   //一度に追加する数の変更ボタンがクリック終了
+    click = false;
+    stopInterval();
+    plusQtyplusQty = 1;
+    plusQtyplusedQty = 0;
+});  
+minus.addEventListener('mousedown',plusminusdown);  //一度に追加する数の変更ボタンがクリック開始
+minus.addEventListener('mouseup',() => {  //一度に追加する数の変更ボタンがクリック終了
+    click = false; 
+    stopInterval();
+    plusQtyplusQty = 1;
+    plusQtyplusedQty = 0;
+}); 
+
+document.addEventListener('mouseover',hoverInfoON);
 document.addEventListener('mousemove',(event) => { //説明が画面の外に出ないようにする
     if(event.pageY > window.innerHeight * (3 / 4)){
         hoverInfo.style.top = `${event.pageY - (hoverInfo.offsetHeight + 10)}px`; //マウスのうえ
@@ -1038,7 +1100,26 @@ infomationBtn.addEventListener('click',showInfomation);
 closeInfo.addEventListener('click',closeInfomation);
 autoAtomInner.addEventListener('click',autoAtomClick);
 autoEnergyInner.addEventListener('click',autoEnergyClick);
-//developer.addEventListener('click',selectDev);
+developer.addEventListener('click',selectDev);
+toridasiHTML.addEventListener('click',()=>{
+    if(toridasi == 'OFF'){
+        toridasi = 'ON';
+        toridasiHTML.style.backgroundColor = "#0077ff";
+    }else{
+        toridasi = 'OFF';
+        toridasiHTML.style.backgroundColor = "rgb(134, 134, 134)";
+    }
+    hoverInfo.style.display = 'block';
+        name.innerHTML = '取り出し';
+        info1.innerHTML = 'オンにしている状態で開発装置をクリックすると';
+        info2.innerHTML = '開発装置の中身を取り出します';
+        info3.innerHTML = `現在:${toridasi}`;
+        info4.innerHTML = '';
+        info5.innerHTML = '';
+        info6.innerHTML = '';
+        info7.innerHTML = '';
+        info8.innerHTML = '';
+});
 
 document.addEventListener('keydown',() =>{
     console.log(document.activeElement);
