@@ -1,7 +1,8 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Oleo+Script+Swash+Caps&display=swap');
 *{
     overflow: hidden;
-    font-family: "SourceHanCodeJP-Regular"; 
+    font-family: 'Noto Sans JP', sans-serif;
 }
 #button{
     text-align: center;
@@ -386,7 +387,7 @@ input:checked + label{
     width: 8vh;
     border: 0px solid;
     border-radius: 8vh;
-    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+    font-family: 'Oleo Script Swash Caps', cursive;
     font-weight: 900;
     position: absolute;
     top: 3vh;
@@ -407,7 +408,7 @@ input:checked + label{
     width: 8vh;
     border: 0px solid;
     border-radius: 8vh;
-    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+    font-family: 'Oleo Script Swash Caps', cursive;
     font-weight: 900;
     position: absolute;
     top: 0vh;
