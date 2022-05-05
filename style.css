@@ -386,7 +386,7 @@ input:checked + label{
     height: 8vh;
     width: 8vh;
     border: 0px solid;
-    border-radius: 8vh;
+    /*border-radius: 8vh;*/
     font-family: 'Oleo Script Swash Caps', cursive;
     font-weight: 900;
     position: absolute;
