@@ -5,6 +5,12 @@
     <title>元素クリッカー</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="24.png" sizes="24x24" />
+    <link rel="icon" type="image/png" href="32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="48.png" sizes="48x48" />
+    <link rel="icon" type="image/png" href="64.png" sizes="64x64" />
+    <link rel="icon" type="image/png" href="128.png" sizes="128x128" />
 </head>
     <body>
     <div id="divId"> 
@@ -17,7 +23,7 @@
             
             <button id="plusH">H</button>
         </div>
-        <h2 id="ApS">元素毎秒(ApS):0</h2>
+        <h2 id="ApS">合計元素毎秒(ApS):0</h2>
         <h2 id="EpS">エネルギー毎秒(EpS):0</h2>
         <br>
     
@@ -101,6 +107,7 @@
             <div style="width:25vh; height:25vh; background-image:url(粒子中性子化装置.svg); background-size:100%;"    id="toNeutron" ></div>
             <div style="width:25vh; height:25vh; background-image:url(原子加速装置.svg); background-size:100%;"       id="atomKsk" ></div>
             <button id="toridasi">取り出し</button>
+            <button id="disSelect">選択解除</button>
         </div>
         <div id="creator">
             <button id="autoAtom">自動生産</button>
@@ -184,7 +191,7 @@
                 </tr>
                 <tr>
                     <td class="greentd">エネルギー(E)</td>
-                    <td id="ENum">0</td>
+                    <td id="ENum">0E</td>
                 </tr>
             </table>
         </div>

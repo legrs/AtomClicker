@@ -35,14 +35,15 @@
     top: 0vh;
     left: 0vh;
     background-color: #7b7b7b;
-    width: 60vh;
-    height: 13vh;
+    width: 30vw;
+    height: 15vh;
     text-align: center;
     margin: 0vh;
 }
 #atomQty{
     color: rgb(255, 255, 255);
-    font-size: 5vh;
+    font-size: 7vh;
+    margin-top: 2vh;
 }
 #ApS{
     position: absolute;
@@ -105,8 +106,8 @@ td:hover{
     font-size: 5vh;
     padding-top: 4vh;
     padding-bottom: 4vh;
-    padding-left: 8vh;
-    padding-right: 8vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
     border-radius: 1vh;
     transition: all 0.2s;
 }
@@ -118,7 +119,7 @@ td:hover{
 #menu{
     position: absolute;
     top: 50vh;
-    left: 23vh;
+    left: 15vh;
 }
 #develop,#create{
     display: none;
@@ -130,8 +131,8 @@ input:checked + label{
     font-size: 5vh;
     padding-top: 4vh;
     padding-bottom: 4vh;
-    padding-left: 8vh;
-    padding-right: 10vh;
+    padding-left: 4vw;
+    padding-right: 6vw;
     border-radius: 1vh;
 
 }
@@ -206,7 +207,7 @@ input:checked + label{
 }
 #PNE{
     background-color: #f7f7f7;
-    width: 22vw;
+    width: 25vw;
     height: 32vh;
     position: absolute;
     overflow-x: scroll;
@@ -386,7 +387,7 @@ input:checked + label{
     height: 9vh;
     width: 9vh;
     border: 0px solid;
-    border-radius:9vh;
+    border-radius: 9vh;
     font-family: 'Oleo Script Swash Caps', cursive;
     font-weight: 900;
     position: absolute;
@@ -405,7 +406,7 @@ input:checked + label{
     color: #fff;
     font-size: 5vh;
     height: 9vh;
-    width: 9vh;
+    width:9vh;
     border: 0px solid;
     border-radius: 9vh;
     font-family: 'Oleo Script Swash Caps', cursive;
@@ -463,17 +464,33 @@ h2{
 }
 #toridasi{
     position: absolute;
-    top: 40vh;
-    left: 35vw;
+    top: 35vh;
+    left: 30vw;
     background-color: rgb(134, 134, 134);
     color: #fff;
     border: 0px solid;
     border-radius: 1vh;
-    width: 10vw;
+    width: 15vw;
     height: 8vh;
     font-size: 4vh;
     font-weight: 600;
 }
 #toridasi:hover{
+    cursor: pointer;
+}
+#disSelect{
+    position: absolute;
+    top: 50vh;
+    left: 30vw;
+    background-color: rgb(134, 134, 134);
+    color: #fff;
+    border: 0px solid;
+    border-radius: 1vh;
+    width: 15vw;
+    height: 8vh;
+    font-size: 4vh;
+    font-weight: 600;
+}
+#disSelect:hover{
     cursor: pointer;
 }
