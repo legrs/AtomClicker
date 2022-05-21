@@ -185,20 +185,10 @@ input:checked + label{
     filter: brightness(130%);
     cursor: pointer;
 }
-#toNeutron{
+#atomKsk{
     position: absolute;
     left: 15vw;
     top: 30vh;
-    transition: all 0.2s;
-}
-#toNeutron:hover{
-    filter: brightness(130%);
-    cursor: pointer;
-}
-#atomKsk{
-    position: absolute;
-    left: 30vw;
-    top: 0vh;
     transition: all 0.2s;
 }
 #atomKsk:hover{
@@ -464,14 +454,14 @@ h2{
 }
 #toridasi{
     position: absolute;
-    top: 35vh;
+    top: 5vh;
     left: 30vw;
     background-color: rgb(134, 134, 134);
     color: #fff;
     border: 0px solid;
     border-radius: 1vh;
     width: 15vw;
-    height: 8vh;
+    height: 12vh;
     font-size: 4vh;
     font-weight: 600;
 }
@@ -480,14 +470,14 @@ h2{
 }
 #disSelect{
     position: absolute;
-    top: 50vh;
+    top: 40vh;
     left: 30vw;
     background-color: rgb(134, 134, 134);
     color: #fff;
     border: 0px solid;
     border-radius: 1vh;
     width: 15vw;
-    height: 8vh;
+    height: 12vh;
     font-size: 4vh;
     font-weight: 600;
 }
