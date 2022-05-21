@@ -199,7 +199,7 @@ let DevInnQtyArr = [
                             [],
                             []
                             ];
-let DevUseNeeEneArr= [0.1,1,6,3,1];
+let DevUseNeeEneArr= [0.1,1,4,3,1];
 let AutAtoArr = ['addH','addH2','adda','addHe','addLi','addBe','addBe2','addC'];
 let AutAtoNamArr = ['水素カーソル','水電解装置','水素誘引装置','ヘリウムタービン','リチウム生成装置','ベリリウム複製装置','ベリリウム鉱山','有機発生装置'];
 let AutAtoQtyArr = [0,0,0,0,0,0,0,0];
@@ -722,20 +722,21 @@ function FDevClick(element){
     let canLevelUp=0;
     if(DevArr.includes(element.target.id)){ //開発装置がクリック   DevArr.indexOf(element.target.id)
         console.log('開発装置がクリック');
-        if(DevInnAtoArr[DevArr.indexOf(element.target.id)]==''){ //中身がない場合
+        if(DevInnAtoArr[DevArr.indexOf(element.target.id)]=='' && SelAtoNow==''){ //中身がない場合
             console.log('中身がない');
-            DevLevNeeAtoArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)].forEach((value,index) => {
-                AtoArr.forEach((value2,index2) => {  //それをれの元素
-                    if(value == value2 && DevLevNeeQtyArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)][index]<=AtoQtyArr[index2]){
-                        
-                        canLevelUp++;
-                    if(canLevelUp==DevLevNeeAtoArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)].length){
-                        AtoQtyArr[index2]-=DevLevNeeQtyArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)][index];
-                        DevLevArr[DevArr.indexOf(element.target.id)]++;
-                    }
-                    }
+            if(DevLevArr[DevArr.indexOf(element.target.id)]!=3){
+                DevLevNeeAtoArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)].forEach((value,index) => {
+                    AtoArr.forEach((value2,index2) => {  //それをれの元素
+                        if(value == value2 && DevLevNeeQtyArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)][index]<=AtoQtyArr[index2]){
+                                canLevelUp++;
+                            if(canLevelUp==DevLevNeeAtoArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)].length){
+                                AtoQtyArr[index2]-=DevLevNeeQtyArr[DevLevArr[DevArr.indexOf(element.target.id)]][DevArr.indexOf(element.target.id)][index];
+                                DevLevArr[DevArr.indexOf(element.target.id)]++;
+                            }
+                        }
+                    });
                 });
-            });
+            }
             
         }else{  //中身あり
             if(toridasi=='ON'){
@@ -848,26 +849,30 @@ function FprocesDev(element){
             console.log('a');
             if(Ene>=DevUseNeeEneArr[DevArr.indexOf(element.target.id)]*FsumArr(DevInnQtyArr[DevArr.indexOf(element.target.id)])){
                 switch(element.target.id){
-                    case 'toEnergy':
-                    let DevLev10=1;
-                    for(let i=0;i<DevLevArr[0]-1;i++){
-                        DevLev10=Number(`${DevLev10}${0}`);
-                    }
-                    Ene+=Math.round(DevUseNeeEneArr[0] * DevLev10 * DevInnQtyArr[0][0]);
-                    DevInnAtoArr[0].pop();
-                    DevInnQtyArr[0].pop();
-                    break;
-                    case 'toAtom':
+                    case 'toEnergy': 
+                        let DevLev10=1;
+                        for(let i=0;i<DevLevArr[0]-1;i++){
+                            DevLev10=Number(`${DevLev10}${0}`);
+                        }
+                        Ene+=Math.round(DevUseNeeEneArr[0] * DevLev10 * DevInnQtyArr[0][0]);
+                        FDevMessage([2,0,'E',Math.round(DevUseNeeEneArr[0] * DevLev10 * DevInnQtyArr[0][0])]);
+                        DevInnAtoArr[0].pop();
+                        DevInnQtyArr[0].pop();
+                        break;
+                    case 'toAtom': //
                         if(DevInnAtoArr[DevArr.indexOf(element.target.id)].length==2 && DevInnAtoArr[DevArr.indexOf(element.target.id)].includes('p') && DevInnAtoArr[DevArr.indexOf(element.target.id)].includes('e')){ //pとeだけ(中性子作る)
                             if(DevInnQtyArr[DevArr.indexOf(element.target.id)][DevInnAtoArr[DevArr.indexOf(element.target.id)].indexOf('p')]==DevInnQtyArr[DevArr.indexOf(element.target.id)][DevInnAtoArr[DevArr.indexOf(element.target.id)].indexOf('e')]){
                                 PneQtyArr[1]+=DevInnQtyArr[DevArr.indexOf(element.target.id)][0];
+                                
+                                console.log(DevUseNeeEneArr[1]*FsumArr(DevInnQtyArr[1]));
+                                Ene-=DevUseNeeEneArr[1]*FsumArr(DevInnQtyArr[1]);
+                                FDevMessage([2,1,'n',DevInnQtyArr[DevArr.indexOf(element.target.id)][0]]);
                                 DevInnAtoArr[1].forEach(() => { //中身消す
                                     DevInnAtoArr[1].pop();
                                     DevInnQtyArr[1].pop();
                                 });
                                 DevInnAtoArr[1].pop();
                                 DevInnQtyArr[1].pop();
-                                Ene-=DevUseNeeEneArr[1]*FsumArr(DevInnQtyArr[1]);
                             }
                         }else{
                             let CanCre=0;
@@ -876,7 +881,6 @@ function FprocesDev(element){
                             for(let i=0;i<10;i++){
                                 CanCre=0;
                                 for(let ind=0;ind<3;ind++){
-                                    //console.log(PneAtoArr[ind][i],'<=',DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[ind])],'/////',DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[ind])],'%',PneAtoArr[ind][i]);
                                     if(PneAtoArr[ind][i]<=DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[ind])] && DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[ind])]%PneAtoArr[ind][i]==0){
                                         CanCre++;
                                         if(CanCre==3 && [DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[1])]/PneAtoArr[1][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[2])]/PneAtoArr[2][i]].every(v => v === DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i])){
@@ -893,20 +897,51 @@ function FprocesDev(element){
                             }
                             console.log(AddAtoCreNum,AddAtoQtyCre,CanCre);
                             if(AddAtoQtyCre!= -100){
+                                Ene-=DevUseNeeEneArr[1]*FsumArr(DevInnQtyArr[1]);
+                                AtoQtyArr[AddAtoCreNum]+=AddAtoQtyCre;
+                                foundAto.push(AtoArr[AddAtoCreNum]);
+                                if(!(foundAto.includes(AtoArr[AddAtoCreNum]))){
+                                    AtoArrHtm[AddAtoCreNum].innerHTML=AtoArr[AddAtoCreNum];
+                                }
+                                FDevMessage([2,1,AtoQtyArr[AddAtoCreNum],AddAtoQtyCre]);
                                 DevInnAtoArr[1].forEach(() => { //中身消す
                                     DevInnAtoArr[1].pop();
                                     DevInnQtyArr[1].pop();
                                 });
                                 DevInnAtoArr[1].pop();
                                 DevInnQtyArr[1].pop();
-                                Ene-=DevUseNeeEneArr[1]*FsumArr(DevInnQtyArr[1]);
-                                AtoQtyArr[AddAtoCreNum]+=AddAtoQtyCre;
                             }
                             }
                         break;
                     case 'atomKsk':
+                        let samePneQty=[0,0,0];
+                        let CreAtoQty;
+                        let CreAtoNum=-100;
+                        DevInnAtoArr[2].forEach((value,index) => {
+                            for(let i=0;i<3;i++){
+                                samePneQty[i]+=PneAtoArr[i][AtoArr.indexOf(value)]*DevInnQtyArr[2][index];
+                            }
+                        });
+                        AtoArr.forEach((value,index) => {
+                            if([PneAtoArr[0][index]==samePneQty[0],PneAtoArr[1][index]==samePneQty[1],PneAtoArr[2][index]==samePneQty[2]].every(v => v === true) && samePneQty[0]%PneAtoArr[0][index]==0){
+                                CreAtoNum=index;
+                                CreAtoQty=samePneQty[0]/PneAtoArr[0][index];
+                            }
+                        });
+                        
+                        if(CreAtoNum!=-100 && CreAtoNum>3){
+                            AtoQtyArr[CreAtoNum]+=CreAtoQty;
+                            Ene-=DevUseNeeEneArr[3]*FsumArr(DevInnQtyArr[2]);
+                            FDevMessage([2,1,AtoQtyArr[CreAtoNum],CreAtoQty]);
+                            DevInnAtoArr[2].forEach(() => { //中身消す
+                                DevInnAtoArr[2].pop();
+                                DevInnQtyArr[2].pop();
+                            });
+                            DevInnAtoArr[2].pop();
+                            DevInnQtyArr[2].pop();
+                        }
                         break;
-                    case 'toPNE':
+                    case 'toPNE': //
                         DevInnAtoArr[3].forEach((value,index) => {
                             AtoArr.forEach((value2,index2) => {
                                 if(value==value2){
@@ -914,23 +949,25 @@ function FprocesDev(element){
                                         PneQtyArr[index3]+=PneAtoArr[index3][index2]*DevInnQtyArr[3][index];
                                     });
                                     Ene-=DevUseNeeEneArr[3]*FsumArr(DevInnQtyArr[3]);
+                                    hoverInfHtm.style.display = 'block';
                                     DevInnAtoArr[3].forEach(() => { //中身消す
                                         DevInnAtoArr[3].pop();
                                         DevInnQtyArr[3].pop();
                                     });
                                     DevInnAtoArr[3].pop();
                                     DevInnQtyArr[3].pop();
-                                        
-                                        
                                 }
                             });
-
                         });
                         break;
                     case 'toNeutron':
+
                         break;
                 }
-                FshowHoverInf(element);
+                setTimeout(() => {
+                    FshowHoverInf(element);
+                }, 2000);
+                
             }else{
                 if(element.target.id=='toEnergy'){
                     let DevLev10=1;
@@ -952,6 +989,9 @@ function FprocesDev(element){
                     Inf6.innerHTML = '';
                     Inf7.innerHTML = '';
                     Inf8.innerHTML = '';
+                    setTimeout(() => {
+                        FshowHoverInf(element);
+                    }, 2000);
                 }               
             }
             
@@ -1025,6 +1065,87 @@ function FtoSI(Num){ //SI接頭辞を付ける
             }
         }
         
+    }
+}
+function Fsuper(Num){ //試験用
+    if(Num!=''){
+        AtoQtyArr.forEach((value,index) => {
+            AtoQtyArr[index]+=Num;
+        });
+        foundAto=['H','He','Li','Be','B','C','N','O','F','Ne'];
+        PneQtyArr.forEach((value,index) => {
+            PneQtyArr[index]+=Num;
+        });
+        Ene+=Num;
+    }
+}
+function FDevMessage(Num){//Num配列[メッセージ番号,装置番号,OP1,OP2,OP3,OP4]
+                          //      [    0        1     2   3   4   5]
+    hoverInfHtm.style.display = 'block';
+    InfNamHtm.innerHTML = DevNamArr[Num[1]];
+    Inf1.innerHTML = '';
+    Inf2.innerHTML = '';
+    Inf3.innerHTML = '';
+    Inf4.innerHTML = '';
+    Inf5.innerHTML = '';
+    Inf6.innerHTML = '';
+    Inf7.innerHTML = '';
+    Inf8.innerHTML = '';
+    switch(Num[0]){
+        case 0:  //0
+            InfNamHtm.innerHTML = '加工に失敗しました';
+            Inf1.innerHTML = '粒子は生産されませんでした';
+            Inf2.innerHTML = '';
+            Inf3.innerHTML = '';
+            Inf4.innerHTML = '';
+            Inf5.innerHTML = '';
+            Inf6.innerHTML = '';
+            Inf7.innerHTML = '';
+            Inf8.innerHTML = '';
+            break;
+        case 1:
+            InfNamHtm.innerHTML = '加工に失敗しました';
+            Inf1.innerHTML = '元素は生産されませんでした';
+            Inf2.innerHTML = '';
+            Inf3.innerHTML = '';
+            Inf4.innerHTML = '';
+            Inf5.innerHTML = '';
+            Inf6.innerHTML = '';
+            Inf7.innerHTML = '';
+            Inf8.innerHTML = '';
+            break;
+        case 2:
+            Inf1.innerHTML = `${Num[2]} ${Num[3]}生産`;
+            Inf2.innerHTML = ``;
+            Inf3.innerHTML = '';
+            Inf4.innerHTML = '';
+            Inf5.innerHTML = '';
+            Inf6.innerHTML = '';
+            Inf7.innerHTML = '';
+            Inf8.innerHTML = '';
+            break;
+        case 3:
+            Inf1.innerHTML = ``;
+            Inf2.innerHTML = `${Num[2]} ${Num[3]}消費`;
+            Inf3.innerHTML = '';
+            Inf4.innerHTML = '';
+            Inf5.innerHTML = '';
+            Inf6.innerHTML = '';
+            Inf7.innerHTML = '';
+            Inf8.innerHTML = '';
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
+            break;
+        case 9:
+            break;
     }
 }
 
