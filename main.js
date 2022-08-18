@@ -29,7 +29,7 @@
     名前:変数と同じかつ最初にFを付ける
 */
 
-let SystemMessage =['もしかして今ズルをして元素を増やそうとしているのかい？それともバグの確認かい？','こんにちは！ゲームでズルをするのって良くない..よね？','やあ、調子はどう？ ところで、質量保存の法則って知っているかい？'];
+let SystemMessage =['もしかして今ズルをして元素を増やそうとしているのかい？それともバグの確認かい？','こんにちは！ゲームでズルをするのって良くない..よね？','最近AtomClickerでズルをする人がいるんだよ'];
 let Rad1Htm = document.querySelector('#develop');      // 切り
 let Rad2Htm = document.querySelector('#create');       //   替え
 let DevHtm = document.querySelector('#developer'); //       専
