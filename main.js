@@ -1341,7 +1341,7 @@ function keydownEvent(event){
             data2  += Fzenbu2(AutEneUseNeeQtyNow);
 
         
-
+            console.log("保存");
             document.cookie = `a=${data}=${data1}="${data2}; max-age=31536000`;
             
         }
