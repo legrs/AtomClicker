@@ -1351,7 +1351,7 @@ function keydownEvent(event){
     if(event.ctrlKey) {
         if(event.code === "KeyX"){
             if(window.confirm("cookieデータを削除しますか？")==true){
-                document.cookie = ``;
+                document.cookie = "max-age=1";
             }
         }
     }
