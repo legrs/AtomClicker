@@ -28,7 +28,7 @@
 関数名:
     名前:変数と同じかつ最初にFを付ける
 */
-
+console.log(document.cookie);
 const SystemMessage =['バグの確認だよね？不正をして元素を増やすなんてことはしないよね？','こんにちは！ゲームでズルをするのって良くないよね？','最近AtomClickerで不正をする人がいるんだよ'];
 let Rad1Htm = document.querySelector('#develop');      // 切り
 let Rad2Htm = document.querySelector('#create');       //   替え
