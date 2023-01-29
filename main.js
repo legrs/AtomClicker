@@ -1309,10 +1309,6 @@ function Fzenbu2(arr){
 }
 
 
-function Fgyaku(naka){
-    return naka.split(",");
-}
-
 function Fgyaku2(naka){
     let aaa;
     aaa = naka.split("/");
@@ -1342,69 +1338,46 @@ function keydownEvent(event){
             data2  += Fzenbu2(AutAtoUseNeeQty) + ":";
             data2  += Fzenbu2(AutAtoUseNeeQtyNow) + ":";
             data2  += Fzenbu2(AutEneUseNeeQty) + ":";
-            data2  += Fzenbu2(AutEneUseNeeQtyNow) + ":";
+            data2  += Fzenbu2(AutEneUseNeeQtyNow);
 
-        /* 
-            let AtoQtyArr = [0,0,0,0,0,0,0,0,0,0]; 
-            let DevLevArr = [0,0,0,0,0]; 
-            let PneQtyArr = [0,0,0];
-            let aps = [0,0,0,0,0,0,0,0,0,0];
-            let AutAtoQtyArr = [0,0,0,0,0,0,0,0];
-            let AutEneQtyArr = [0,0,0,0];
-            let Ene = 0; 
-            let eps = 0;
+        
 
-            let foundAto = ['H']; 
-
-            let DevInnAtoArr = [
-                                    [],
-                                    [],
-                                    [],
-                                    []
-                                    ];
-            let DevInnQtyArr = [
-                                        [],
-                                        [],
-                                        [],
-                                        []
-                                        ];
-            
-            let AutAtoUseNeeQty=[
-                                [15],
-                                [200],
-                                [2000],
-                                [200,5],
-                                [800,5],
-                                [2000,5],
-                                [3000,100,10],
-                                [4000,1000,100,10,5]
-                                ];
-            let AutAtoUseNeeQtyNow =[
-                                    [15],
-                                    [100],
-                                    [2000],
-                                    [200,5],
-                                    [800,5],
-                                    [2000,5],
-                                    [3000,100,10],
-                                    [4000,1000,100,10,5]
-                                    ];
-            
-            let AutEneUseNeeQty =[
-                                [3000,10],
-                                [5000,1000,10],
-                                [4000,100,100],
-                                [1000,1000,1000,200]
-                                ];
-            let AutEneUseNeeQtyNow=[
-                                    [3000,10],
-                                    [5000,1000,10],
-                                    [4000,100,100],
-                                    [1000,1000,1000,100]
-                                    ]; */
-
-            document.cookie = `${data}=${data1}="${data2}`;
-            console.log("保存したが");
+            document.cookie = `${data}=${data1}="${data2} max-age=31536000`;
+            console.log(data,data1,data2);
         }
     }
+}
+function keydownEvent(event){
+    if(event.ctrlKey) {
+        if(event.code === "KeyX"){
+            if(window.confirm("cookieデータを削除しますか？")==true){
+                document.cookie = ``;
+            }
+        }
+    }
+}
+
+if(document.cookie!=""){
+    let data = document.cookie.slice("=")[0];
+    let data1 = document.cookie.slice("=")[1];
+    let data2 = document.cookie.slice("=")[2];
+    data = data.slice(":");
+
+    AtoQtyArr = data[0].slice(",").map(Number);
+    DevLevArr = data[1].slice(",").map(Number);
+    PneQtyArr = data[2].slice(",").map(Number);
+    AutAtoQtyArr = data[3].slice(",").map(Number);
+    AutEneQtyArr = data[4].slice(",").map(Number);
+    aps = Number(data[5]);
+    Ene = Number(data[6]);
+    eps = Number(data[7]);
+
+    foundAto = data1.slice(",");
+
+    DevInnAtoArr = Fgyaku(data2[0]);
+    DevInnQtyArr = Fgyaku(data2[1]);
+    AutAtoUseNeeQty = Fgyaku(data2[2]);
+    AutAtoUseNeeQtyNow = Fgyaku(data2[3]);
+    AutEneUseNeeQty = Fgyaku(data2[4]);
+    AutEneUseNeeQtyNow = Fgyaku(data2[5]);
 }
