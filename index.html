@@ -246,7 +246,10 @@
         $(document).ready(function(){
             $(window).keydown(function(event) {
                 var code = (event.keyCode ? event.keyCode : event.which);
-                if (!(code == 83 && event.ctrlKey)) return true;
+                if (!(code == 83 && event.ctrlKey)){
+                    keydownEvent(event);
+                    return true;
+                }
                 event.preventDefault();
                 return false;
             }); 
