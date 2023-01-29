@@ -1343,7 +1343,7 @@ function keydownEvent(event){
         
 
             document.cookie = `a=${data}=${data1}="${data2}; max-age=31536000`;
-            console.log(data,data1,data2);
+            
         }
     }
 }
