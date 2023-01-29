@@ -29,7 +29,7 @@
     名前:変数と同じかつ最初にFを付ける
 */
 
-let SystemMessage =['もしかして今ズルをして元素を増やそうとしているのかい？それともバグの確認かい？','こんにちは！ゲームでズルをするのって良くない..よね？','最近AtomClickerでズルをする人がいるんだよ'];
+const SystemMessage =['バグの確認だよね？不正をして元素を増やすなんてことはしないよね？','こんにちは！ゲームでズルをするのって良くないよね？','最近AtomClickerで不正をする人がいるんだよ'];
 let Rad1Htm = document.querySelector('#develop');      // 切り
 let Rad2Htm = document.querySelector('#create');       //   替え
 let DevHtm = document.querySelector('#developer'); //       専
@@ -129,15 +129,15 @@ document.querySelector('#O'),
 document.querySelector('#F'),
 document.querySelector('#Ne')];
 
-let AtoArr     =    ['H','He','Li','Be','B','C','N','O','F','Ne']; //元素全部
-let AtoNamArr      =    ['水素','ヘリウム','リチウム','ベリリウム',' ホウ素','炭素','窒素','酸素','フッ素','ネオン'];
+const AtoArr     =    ['H','He','Li','Be','B','C','N','O','F','Ne']; //元素全部
+const AtoNamArr      =    ['水素','ヘリウム','リチウム','ベリリウム',' ホウ素','炭素','窒素','酸素','フッ素','ネオン'];
 let AtoQtyArr = [0,0,0,0,0,0,0,0,0,0]; //元素の数
 
-let DevNamArr =    ['質量エネルギー化装置','粒子合成装置','原子加速装置','原子分解装置'];
-let DevArr=    ['toEnergy',       'toAtom',   'atomKsk',  'toPNE',];
+const DevNamArr =    ['質量エネルギー化装置','粒子合成装置','原子加速装置','原子分解装置'];
+const DevArr=    ['toEnergy',       'toAtom',   'atomKsk',  'toPNE',];
 let DevLevArr = [0,0,0,0,0]; 
-let maxDevLevArr=[3,1,2,1,1];
-let DevLevNeeAtoArr =[[ 
+const maxDevLevArr=[3,1,2,1,1];
+const DevLevNeeAtoArr =[[ 
                         ['H'],
                         ['H'],
                         ['Li','Be'],
@@ -155,7 +155,7 @@ let DevLevNeeAtoArr =[[
                         [],
                         []
                         ]];
-let DevLevNeeQtyArr =[[
+const DevLevNeeQtyArr =[[
                         [60],
                         [100],
                         [200,20],
@@ -173,7 +173,7 @@ let DevLevNeeQtyArr =[[
                         [],
                         []
                         ]];
-let DevInfArr = [
+const DevInfArr = [
                         '水素の質量をエネルギーに変換します',
                         '粒子を合成し原子にします',
                         '原子を衝突させ元素を作り出します',
@@ -190,13 +190,13 @@ let DevInnQtyArr = [
                             [],
                             []
                             ];
-let DevUseNeeEneArr= [0.1,1,4,3,1];
-let AutAtoArr = ['addH','addH2','adda','addHe','addLi','addBe','addBe2','addC'];
-let AutAtoNamArr = ['水素カーソル','水電解装置','水素誘引装置','ヘリウムタービン','リチウム生成装置','ベリリウム複製装置','ベリリウム鉱山','有機発生装置'];
+const DevUseNeeEneArr= [0.1,1,4,3,1];
+const AutAtoArr = ['addH','addH2','adda','addHe','addLi','addBe','addBe2','addC'];
+const AutAtoNamArr = ['水素カーソル','水電解装置','水素誘引装置','ヘリウムタービン','リチウム生成装置','ベリリウム複製装置','ベリリウム鉱山','有機発生装置'];
 let AutAtoQtyArr = [0,0,0,0,0,0,0,0];
-let apsAutAto = ['H','H','H','He','Li','Be','Be','C'];
-let apsQtyAutAto = [0.1,1,10,0.1,0.1,0.1,1,1];
-let AutAtoUseNeeAto = [
+const apsAutAto = ['H','H','H','He','Li','Be','Be','C'];
+const apsQtyAutAto = [0.1,1,10,0.1,0.1,0.1,1,1];
+const AutAtoUseNeeAto = [
                     ['H'],
                     ['H'],
                     ['H'],
@@ -226,12 +226,12 @@ let AutAtoUseNeeQtyNow =[
                         [3000,100,10],
                         [4000,1000,100,10,5]
                         ];
-let AutEneArr = ['addE1','addE2','addE3','addE4'];
-let AutEneNamArr = ['炭素太陽光発電装置','結合エネルギー発電装置','炭素燃焼発電装置','常温核融合発電装置'];
+const AutEneArr = ['addE1','addE2','addE3','addE4'];
+const AutEneNamArr = ['炭素太陽光発電装置','結合エネルギー発電装置','炭素燃焼発電装置','常温核融合発電装置'];
 let AutEneQtyArr = [0,0,0,0];
-let epsAutEne = ['E','E','E','E'];
-let epsQtyAutEne= [1,5,8,20];
-let AutEneUseNeeAto = [
+const epsAutEne = ['E','E','E','E'];
+const epsQtyAutEne= [1,5,8,20];
+const AutEneUseNeeAto = [
                     ['Li','C'],
                     ['H','Li','O'],
                     ['H','C','O'],
@@ -249,7 +249,7 @@ let AutEneUseNeeQtyNow=[
                         [4000,100,100],
                         [1000,1000,1000,100]
                         ];
-let PneAtoArr  =[//それぞれの元素の陽子の数
+const PneAtoArr  =[//それぞれの元素の陽子の数
                 [1,2,3,4,5,6,7,8,9,10], //p
                 [0,2,4,5,5,6,7,8,10,10], //n
                 [1,2,3,4,5,6,7,8,9,10] //e
@@ -261,7 +261,7 @@ let delay500ms;
 
 let SelAtoNow = ''; //選択している元素
 let Ene = 0;  //エネルギー
-let PneArr=['p','n','e'];
+const PneArr=['p','n','e'];
 let PneQtyArr = [
 0,  //陽子の数
 0, //中性子の数
@@ -279,7 +279,7 @@ let eps = 0;
 
 let toridasi = 'OFF';
 
-console.log(`[===${SystemMessage[Math.floor(Math.random()*3)]}===]`);
+console.log(`[==${SystemMessage[Math.floor(Math.random()*3)]}==]`);
 function Fchange(element){ //画面切り替え
     if(toridasi=='OFF'){
         if(element.target.id != 'develop' && element.target.id != 'create'){
@@ -377,17 +377,14 @@ function FSel(element){ //選択
     }
 }
 function FSync(){ //実際の数字とhtml表示を同期
-    AtoQtyHtm.innerHTML = FtoSI(FsumArr(AtoQtyArr));
+    AtoQtyHtm.innerHTML = FtoSI(FsumArr(AtoQtyArr),0);
     AtoQtyArrHtm.forEach((value,index) => {
-        value.innerHTML = FtoSI(AtoQtyArr[index]);
+        value.innerHTML = FtoSI(AtoQtyArr[index],0);
     });
     PneQtyArrHtm.forEach((value,index) => {
-        value.innerHTML = FtoSI(PneQtyArr[index]);
+        value.innerHTML = FtoSI(PneQtyArr[index],0);
     });
-    foundAto.forEach((value,index) => {
-        AtoArrHtm[index].innerHTML = AtoArr[index];
-    });
-    EneHtm.innerHTML = `${FtoSI(Ene)}E`;
+    EneHtm.innerHTML = `${FtoSI(Ene,0)}E`;
     
 }
 function FBac(){ //製作画面に戻る
@@ -449,11 +446,11 @@ function FAutAtoclick(element){
             });
             AtoArr.forEach((value,index) => {
                 if(value == apsAutAto[AutAtoArr.indexOf(element.target.id)]){
-                    aps[index] = Number((AutAtoQtyArr[AutAtoArr.indexOf(element.target.id)] * apsQtyAutAto[AutAtoArr.indexOf(element.target.id)]).toFixed(1));
+                    aps[index] += Number(( apsQtyAutAto[AutAtoArr.indexOf(element.target.id)]).toFixed(1));
                 }
             });
-            AutAtoQtyArrHtm[AutAtoArr.indexOf(element.target.id)].innerHTML = FtoSI(AutAtoQtyArr[AutAtoArr.indexOf(element.target.id)]);
-            apsHtm.innerHTML = `合計元素毎秒(ApS):${FtoSI(FsumArr(aps))}`;
+            AutAtoQtyArrHtm[AutAtoArr.indexOf(element.target.id)].innerHTML = FtoSI(AutAtoQtyArr[AutAtoArr.indexOf(element.target.id)],0);
+            apsHtm.innerHTML = `合計元素毎秒(ApS):${FtoSI(FsumArr(aps),1)}`;
         }
         FshowHoverInf(element);
     }
@@ -487,8 +484,8 @@ function FAutEneclick(element){
             });
                 eps = Number((AutEneQtyArr[AutEneArr.indexOf(element.target.id)] * epsQtyAutEne[AutEneArr.indexOf(element.target.id)]).toFixed(1));
 
-            AutEneQtyArrHtm[AutEneArr.indexOf(element.target.id)].innerHTML = FtoSI(AutEneQtyArr[AutEneArr.indexOf(element.target.id)]);
-            epsHtm.innerHTML = `エネルギー毎秒(EpS):${FtoSI(eps)}`;
+            AutEneQtyArrHtm[AutEneArr.indexOf(element.target.id)].innerHTML = FtoSI(AutEneQtyArr[AutEneArr.indexOf(element.target.id)],0);
+            epsHtm.innerHTML = `エネルギー毎秒(EpS):${FtoSI(eps,1)}`;
         }
         FshowHoverInf(element);
     }
@@ -593,9 +590,9 @@ function FshowHoverInf(element){
                 }
                 if(element.target.id == 'toEnergy'){
                     console.log(DevLev10);
-                    Inf7.innerHTML =`${FtoSI(Math.round(DevUseNeeEneArr[0] * DevLev10 * DevInnQtyArr[0][0]))}E 生産`;
+                    Inf7.innerHTML =`${FtoSI(Math.round(DevUseNeeEneArr[0] * DevLev10 * DevInnQtyArr[0][0]),0)}E 生産`;
                 }else{
-                    Inf7.innerHTML =`${FtoSI(Math.round(DevUseNeeEneArr[DevArr.indexOf(element.target.id)] * (DevLev10 * FsumArr(DevInnQtyArr[DevArr.indexOf(element.target.id)]))))}E 消費`;
+                    Inf7.innerHTML =`${FtoSI(Math.round(DevUseNeeEneArr[DevArr.indexOf(element.target.id)] * (DevLev10 * FsumArr(DevInnQtyArr[DevArr.indexOf(element.target.id)]))),0)}E 消費`;
                 }
             }
             break;
@@ -611,7 +608,7 @@ function FshowHoverInf(element){
             let AutAtoCreNeeAto='';
             InfNamHtm.innerHTML=AutAtoNamArr[AutAtoArr.indexOf(element.target.id)];
             AutAtoUseNeeAto[AutAtoArr.indexOf(element.target.id)].forEach((value,index) => {
-                AutAtoCreNeeAto=`${AutAtoCreNeeAto} ${value} ${FtoSI(AutAtoUseNeeQtyNow[AutAtoArr.indexOf(element.target.id)][index])},`;
+                AutAtoCreNeeAto=`${AutAtoCreNeeAto} ${value} ${FtoSI(AutAtoUseNeeQtyNow[AutAtoArr.indexOf(element.target.id)][index],0)},`;
             });
             Inf1.innerHTML=`作成必要元素:`;
             Inf2.innerHTML=AutAtoCreNeeAto;
@@ -630,7 +627,7 @@ function FshowHoverInf(element){
             let AutEneCreNeeAto='';
             InfNamHtm.innerHTML=AutEneNamArr[AutEneArr.indexOf(element.target.id)];
             AutEneUseNeeAto[AutEneArr.indexOf(element.target.id)].forEach((value,index) => {
-                AutEneCreNeeAto=`${AutEneCreNeeAto} ${value} ${FtoSI(AutEneUseNeeQtyNow[AutEneArr.indexOf(element.target.id)][index])},`;
+                AutEneCreNeeAto=`${AutEneCreNeeAto} ${value} ${FtoSI(AutEneUseNeeQtyNow[AutEneArr.indexOf(element.target.id)][index],0)},`;
             });
             Inf1.innerHTML=`作成必要元素:`;
             Inf2.innerHTML=AutEneCreNeeAto;
@@ -868,29 +865,38 @@ function FprocesDev(element){
                             let CanCre=0;
                             let AddAtoQtyCre=-100;
                             let AddAtoCreNum=0;
-                            for(let i=0;i<10;i++){
+                            for(let i=0;i<4;i++){  //i=今参照している元素の番号
                                 CanCre=0;
-                                for(let ind=0;ind<3;ind++){
+                                for(let ind=0;ind<3;ind++){  //ind=今参照している粒子の番号 3は粒子の数
                                     if(PneAtoArr[ind][i]<=DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[ind])] && DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[ind])]%PneAtoArr[ind][i]==0){
                                         CanCre++;
-                                        if(CanCre==3 && [DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[1])]/PneAtoArr[1][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[2])]/PneAtoArr[2][i]].every(v => v === DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i])){
+                                        /* if(CanCre==3 && [DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[1])]/PneAtoArr[1][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[2])]/PneAtoArr[2][i]].every(v => v === DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i])){
                                             AddAtoQtyCre=DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i];
                                             AddAtoCreNum=i;
                                             console.log(AddAtoCreNum,AddAtoQtyCre);
                                             break;
-                                        }
+                                        } */
                                     }
-                                if(CanCre==3 && [DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[1])]/PneAtoArr[1][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[2])]/PneAtoArr[2][i]].every(v => v === DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i])){
-                                    break;
-                                }
+                                    if(CanCre==3 && [DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[1])]/PneAtoArr[1][i],DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[2])]/PneAtoArr[2][i]].every(v => v === DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i])){
+                                        
+                                        
+                                        AddAtoQtyCre=DevInnQtyArr[1][DevInnAtoArr[1].indexOf(PneArr[0])]/PneAtoArr[0][i];
+                                        AddAtoCreNum=i;
+                                        console.log(AddAtoCreNum,AddAtoQtyCre);
+                                        
+                                        
+                                        
+                                        break;
+                                    }
                                 }
                             }
                             console.log(AddAtoCreNum,AddAtoQtyCre,CanCre);
                             if(AddAtoQtyCre!= -100){
                                 Ene-=DevUseNeeEneArr[1]*FsumArr(DevInnQtyArr[1]);
                                 AtoQtyArr[AddAtoCreNum]+=AddAtoQtyCre;
-                                foundAto.push(AtoArr[AddAtoCreNum]);
-                                if(!(foundAto.includes(AtoArr[AddAtoCreNum]))){
+                                
+                                if(!(foundAto.includes(AtoArr[AddAtoCreNum]))){ //未発見なら
+                                    foundAto.push(AtoArr[AddAtoCreNum]);
                                     AtoArrHtm[AddAtoCreNum].innerHTML=AtoArr[AddAtoCreNum];
                                 }
                                 FDevMessage([2,1,AtoQtyArr[AddAtoCreNum],AddAtoQtyCre]);
@@ -922,6 +928,10 @@ function FprocesDev(element){
                         if(CreAtoNum!=-100 && CreAtoNum>3){
                             AtoQtyArr[CreAtoNum]+=CreAtoQty;
                             Ene-=DevUseNeeEneArr[3]*FsumArr(DevInnQtyArr[2]);
+                            if(!(foundAto.includes(AtoArr[CreAtoNum]))){ //未発見なら
+                                foundAto.push(AtoArr[CreAtoNum]);
+                                AtoArrHtm[CreAtoNum].innerHTML=AtoArr[AddAtoCreNum];
+                            }
                             FDevMessage([2,1,AtoQtyArr[CreAtoNum],CreAtoQty]);
                             DevInnAtoArr[2].forEach(() => { //中身消す
                                 DevInnAtoArr[2].pop();
@@ -1018,7 +1028,7 @@ function FsumArr(array){ //配列を合計
     }
     
 }
-function FtoSI(Num){ //SI接頭辞を付ける
+function FtoSI(Num,fd){ //SI接頭辞を付ける
     if(String(Math.round(Num)).length > 24){
         return `${(Num / 1000000000000000000000000).toFixed(3)}Y`;
     }else{
@@ -1043,7 +1053,7 @@ function FtoSI(Num){ //SI接頭辞を付ける
                                 if(String(Math.round(Num)).length > 3){
                                     return `${(Num / 1000).toFixed(3)}k`;
                                 }else{
-                                    return `${Math.round(Num)}`;
+                                    return `${(Num).toFixed(fd)}`;
                                 }
                             }
                         }
@@ -1275,3 +1285,126 @@ setInterval(() => {
     Ene+=eps/100;
     FSync();
 }, 10);
+
+
+document.addEventListener('keydown', keydownEvent,false);
+
+function Fzenbu(arr){
+    let aaa="";
+    arr.forEach(e =>{
+        aaa += e + ",";
+    })
+    return aaa.slice(0,-1) ;
+}
+
+function Fzenbu2(arr){
+    let aaa="";
+    arr.forEach(e =>{
+        e.forEach(e =>{
+            aaa += e + ",";
+        })
+        aaa = aaa.slice(0,-1) + "/";
+    })
+    return aaa.slice(0,-1);
+}
+
+
+function Fgyaku(naka){
+    return naka.split(",");
+}
+
+function Fgyaku2(naka){
+    let aaa;
+    aaa = naka.split("/");
+    aaa.forEach((e,i) => {
+        aaa[i] = aaa[i].split(",");
+    });
+    return aaa;
+}
+
+function keydownEvent(event){
+    if(event.ctrlKey) {
+        if(event.code === "KeyS"){
+            let data = "";
+            let data1 = "";
+            let data2 = "";
+            data += Fzenbu(AtoQtyArr) + ":";
+            data += Fzenbu(DevLevArr) + ":";
+            data += Fzenbu(PneQtyArr) + ":";
+            data += Fzenbu(AutAtoQtyArr) + ":";
+            data += Fzenbu(AutEneQtyArr) + ":";
+            data += Fzenbu(aps) + ":";
+            data += Ene + ":";
+            data += eps;
+            data1 += Fzenbu(foundAto);
+            data2  += Fzenbu2(DevInnAtoArr) + ":";
+            data2  += Fzenbu2(DevInnQtyArr) + ":";
+            data2  += Fzenbu2(AutAtoUseNeeQty) + ":";
+            data2  += Fzenbu2(AutAtoUseNeeQtyNow) + ":";
+            data2  += Fzenbu2(AutEneUseNeeQty) + ":";
+            data2  += Fzenbu2(AutEneUseNeeQtyNow) + ":";
+
+        /* 
+            let AtoQtyArr = [0,0,0,0,0,0,0,0,0,0]; 
+            let DevLevArr = [0,0,0,0,0]; 
+            let PneQtyArr = [0,0,0];
+            let aps = [0,0,0,0,0,0,0,0,0,0];
+            let AutAtoQtyArr = [0,0,0,0,0,0,0,0];
+            let AutEneQtyArr = [0,0,0,0];
+            let Ene = 0; 
+            let eps = 0;
+
+            let foundAto = ['H']; 
+
+            let DevInnAtoArr = [
+                                    [],
+                                    [],
+                                    [],
+                                    []
+                                    ];
+            let DevInnQtyArr = [
+                                        [],
+                                        [],
+                                        [],
+                                        []
+                                        ];
+            
+            let AutAtoUseNeeQty=[
+                                [15],
+                                [200],
+                                [2000],
+                                [200,5],
+                                [800,5],
+                                [2000,5],
+                                [3000,100,10],
+                                [4000,1000,100,10,5]
+                                ];
+            let AutAtoUseNeeQtyNow =[
+                                    [15],
+                                    [100],
+                                    [2000],
+                                    [200,5],
+                                    [800,5],
+                                    [2000,5],
+                                    [3000,100,10],
+                                    [4000,1000,100,10,5]
+                                    ];
+            
+            let AutEneUseNeeQty =[
+                                [3000,10],
+                                [5000,1000,10],
+                                [4000,100,100],
+                                [1000,1000,1000,200]
+                                ];
+            let AutEneUseNeeQtyNow=[
+                                    [3000,10],
+                                    [5000,1000,10],
+                                    [4000,100,100],
+                                    [1000,1000,1000,100]
+                                    ]; */
+
+            document.cookie = `${data}=${data1}="${data2}`;
+            console.log("保存したが");
+        }
+    }
+}

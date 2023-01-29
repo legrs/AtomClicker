@@ -206,7 +206,7 @@
         <div id="infomationDiv">
             <button id="closeInfomation">×</button>
             <div id="infomationScr">
-                <h2>このサイトについて<span id="creatingNow">-まだ(2022/5/4)作成中です-</span></h2>
+                <h2>このサイトについて<span id="creatingNow">-まだ(2023/01/28)作成中です-</span></h2>
                 <p class="infoPTag" style="display: inline;">このサイトは</p>
                 <a href="https://legrs.github.io/about.html"  target= _blank rel="noopener" id="link">legrs</a>
                 <p class="infoPTag" style="display: inline;">がgithubで公開した元素クリッカー(?)です</p>
@@ -219,27 +219,39 @@
                 <p class="infoPTag" style="display: inline;">不具合の報告などは</p>
                 <a href="https://github.com/legrs/legrs.github.io/issues/1"  target= _blank rel="noopener" id="link">Github Issues</a>
                 <p class="infoPTag" style="display: inline;">(githubアカウントは作成してください)</p>
-                <p class="infoPTag">(まだ技術力などが低いためバグに対応できない可能性があります)</p>
+                <p class="infoPTag">(技術力の問題でバグに対応できない可能性があります)</p>
                 <p class="infoPTag">機能などについてはこれから増やしていくつもりです</p>
                 <p class="infoPTag">元素は元素記号で表し、陽子はp,電子はe,中性子はn,エネルギーはEで表します</p>
                 <p class="infoPTag">1000以上の数字はSI接頭語を使って表します</p>
                 <p class="infoPTag">元素、粒子の単位は全て"個"です</p>
-                <p class="infoPTag">エネルギーの単位は特に定義があるわけではなく、自然にするためにつけたものです</p>
+                <p class="infoPTag">エネルギーの単位は特に定義があるわけではなく、わかりやすくするためにつけたものです</p>
                 <p class="infoPTag">説明が必要なものはカーソルを合わせると説明が出てきます</p>
                 <p class="infoPTag">このサイトは気まぐれで更新されます</p><br>
-                <p class="infoPTag">ヘリウム50個作成までのチュートリアル</p><br><br>
+                <p class="infoPTag">ヘリウム25個作成までのチュートリアル</p><br><br>
                 <p class="infoPTag">1:まず左上の水素ボタンをクリックして水素を100個ほど発生させる</p>
                 <p class="infoPTag">2:製造画面の自動生産から水素カーソルや水電解装置などを作成したり水素ボタンをクリックしたりして</p>
                 <p class="infoPTag">とりあえず水素をたくさん生産する</p>
                 <p class="infoPTag">3:たくさん生産した水素を使い質量エネルギー化装置,粒子合成装置,原子分解装置を作成</p>
-                <p class="infoPTag">4:水素を選択し、開発画面の質量エネルギー化装置を左クリックで水素4000個ぐらい投入(１度に投入する数は左下から変更可能)</p>
+                <p class="infoPTag">4:水素を選択し、開発画面の質量エネルギー化装置を左クリックで水素5000個投入(１度に投入する数は左下から変更可能)</p>
                 <p class="infoPTag">5:右クリックで加工しエネルギーを生産</p>
-                <p class="infoPTag">6:原子分解装置に水素を100個ぐらい投入し右クリックで粒子に変換</p>
+                <p class="infoPTag">6:原子分解装置に水素を100個以上投入し右クリックで粒子に変換</p>
                 <p class="infoPTag">7:粒子合成装置で陽子50個,電子50個を投入し右クリックで中性子50個を生成</p>
-                <p class="infoPTag">8:陽子,電子,中性子をそれぞれ50個ずつ入れて右クリックでヘリウム50個を合成</p>
+                <p class="infoPTag">8:陽子,電子,中性子をそれぞれ50個ずつ入れて右クリックでヘリウム25個を合成</p>
                 <p class="infoPTag"></p>
             </div>
         </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" type="text/javascript">
+        </script>
+        <script>
+        $(document).ready(function(){
+            $(window).keydown(function(event) {
+                var code = (event.keyCode ? event.keyCode : event.which);
+                if (!(code == 83 && event.ctrlKey)) return true;
+                event.preventDefault();
+                return false;
+            }); 
+        }); 
+        </script>
         <script src="main.js"></script>
     </div>
     </body>
