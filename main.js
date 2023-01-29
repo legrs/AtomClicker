@@ -1342,7 +1342,7 @@ function keydownEvent(event){
 
         
 
-            document.cookie = `${data}=${data1}="${data2} max-age=31536000`;
+            document.cookie = `a=${data}=${data1}="${data2}; max-age=31536000`;
             console.log(data,data1,data2);
         }
     }
@@ -1351,7 +1351,7 @@ function keydownEvent(event){
     if(event.ctrlKey) {
         if(event.code === "KeyX"){
             if(window.confirm("cookieデータを削除しますか？")==true){
-                document.cookie = "max-age=1";
+                document.cookie = "a=;  max-age=0";
             }
         }
     }
