@@ -1287,7 +1287,7 @@ setInterval(() => {
 }, 10);
 
 
-document.addEventListener('keydown', keydownEvent,false);
+//document.addEventListener('keydown', keydownEvent,false);
 
 function Fzenbu(arr){
     let aaa="";
