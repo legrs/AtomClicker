@@ -1363,16 +1363,16 @@ if(document.cookie!=""){
     let data2 = document.cookie.slice("=")[2];
     data = data.slice(":");
 
-    AtoQtyArr = data[0].slice(",").map(Number);
-    DevLevArr = data[1].slice(",").map(Number);
-    PneQtyArr = data[2].slice(",").map(Number);
-    AutAtoQtyArr = data[3].slice(",").map(Number);
-    AutEneQtyArr = data[4].slice(",").map(Number);
+    AtoQtyArr = data[0].split(",").map(Number);
+    DevLevArr = data[1].split(",").map(Number);
+    PneQtyArr = data[2].split(",").map(Number);
+    AutAtoQtyArr = data[3].split(",").map(Number);
+    AutEneQtyArr = data[4].split(",").map(Number);
     aps = Number(data[5]);
     Ene = Number(data[6]);
     eps = Number(data[7]);
 
-    foundAto = data1.slice(",");
+    foundAto = data1.split(",");
 
     DevInnAtoArr = Fgyaku(data2[0]);
     DevInnQtyArr = Fgyaku(data2[1]);
