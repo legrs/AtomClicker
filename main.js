@@ -385,16 +385,19 @@ function FSel(element){ //選択
         Inf8.innerHTML = '';
     }
 }
-function FSync(){ //実際の数字とhtml表示を同期
-    AtoQtyNt.set(FtoSI(FsumArr(AtoQtyArr),0));
+function FSync(){ //実際の数字とhtml表示を同期(値が実際に変わった時だけ.setを呼ぶ。無駄なsetがNumericTextのアニメーションを毎回中断してしまうため)
+    let newAtoQty = FtoSI(FsumArr(AtoQtyArr),0);
+    if(newAtoQty != AtoQtyNt.value) AtoQtyNt.set(newAtoQty);
     AtoQtyNtArr.forEach((value,index) => {
-        value.set(FtoSI(AtoQtyArr[index],0));
+        let newValue = FtoSI(AtoQtyArr[index],0);
+        if(newValue != value.value) value.set(newValue);
     });
     PneQtyNtArr.forEach((value,index) => {
-        value.set(FtoSI(PneQtyArr[index],0));
+        let newValue = FtoSI(PneQtyArr[index],0);
+        if(newValue != value.value) value.set(newValue);
     });
-    EneNt.set(FtoSI(Ene,0));
-
+    let newEne = FtoSI(Ene,0);
+    if(newEne != EneNt.value) EneNt.set(newEne);
 }
 function FBac(){ //製作画面に戻る
     AutAtoHtm.style.display = 'none';
@@ -1288,13 +1291,13 @@ document.addEventListener('mousemove',(event) => { //説明が画面の外に出
         hoverInfHtm.style.left = `${event.pageX + 30}px`;   //マウスのみぎ
     }
 })
-setInterval(() => { //10ms間隔だとNumericTextのアニメーションが完了する前に次のsetで中断されて見えなくなるため500ms間隔にしている
+setInterval(() => {
     AtoQtyArr.forEach((value,index) => {
-        AtoQtyArr[index]+=aps[index]/2;
+        AtoQtyArr[index]+=aps[index]/100;
     });
-    Ene+=eps/2;
+    Ene+=eps/100;
     FSync();
-}, 500);
+}, 10);
 
 
 //document.addEventListener('keydown', keydownEvent,false);
