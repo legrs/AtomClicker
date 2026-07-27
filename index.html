@@ -100,7 +100,7 @@
             <p id="info7"></p>
             <p id="info8"></p>
         </div>
-        <div id="developer" style="display: inline-block;">
+        <div id="developer">
             <div style="width:25vh; height:25vh; background-image:url(質量エネルギー化装置.svg); background-size:100%;" id="toEnergy" ></div>
             <div style="width:25vh; height:25vh; background-image:url(原子分解装置.svg); background-size:100%;"       id="toPNE" ></div>
             <div style="width:25vh; height:25vh; background-image:url(粒子合成装置.svg); background-size:100%;"       id="toAtom" ></div>
@@ -226,13 +226,15 @@
                 <p class="infoPTag">元素、粒子の単位は全て"個"です</p>
                 <p class="infoPTag">エネルギーの単位は特に定義があるわけではなく、わかりやすくするためにつけたものです</p>
                 <p class="infoPTag">説明が必要なものはカーソルを合わせると説明が出てきます</p>
+                <p class="infoPTag">Ctrl+Sでセーブ、Ctrl+Xでセーブデータの削除ができます</p>
+                <p class="infoPTag">セーブ先はcookieなので、ブラウザのcookieを消すとデータも消えます</p>
                 <p class="infoPTag">このサイトは気まぐれで更新されます</p><br>
                 <p class="infoPTag">ヘリウム25個作成までのチュートリアル</p><br><br>
                 <p class="infoPTag">1:まず左上の水素ボタンをクリックして水素を100個ほど発生させる</p>
                 <p class="infoPTag">2:製造画面の自動生産から水素カーソルや水電解装置などを作成したり水素ボタンをクリックしたりして</p>
                 <p class="infoPTag">とりあえず水素をたくさん生産する</p>
                 <p class="infoPTag">3:たくさん生産した水素を使い質量エネルギー化装置,粒子合成装置,原子分解装置を作成</p>
-                <p class="infoPTag">4:水素を選択し、開発画面の質量エネルギー化装置を左クリックで水素5000個投入(１度に投入する数は左下から変更可能)</p>
+                <p class="infoPTag">4:水素を選択し、開発画面の質量エネルギー化装置を左クリックで水素6000個投入(１度に投入する数は左下から変更可能)</p>
                 <p class="infoPTag">5:右クリックで加工しエネルギーを生産</p>
                 <p class="infoPTag">6:原子分解装置に水素を100個以上投入し右クリックで粒子に変換</p>
                 <p class="infoPTag">7:粒子合成装置で陽子50個,電子50個を投入し右クリックで中性子50個を生成</p>
@@ -240,21 +242,6 @@
                 <p class="infoPTag"></p>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" type="text/javascript">
-        </script>
-        <script>
-        $(document).ready(function(){
-            $(window).keydown(function(event) {
-                var code = (event.keyCode ? event.keyCode : event.which);
-                if (!(code == 83 && event.ctrlKey)){
-                    keydownEvent(event);
-                    return true;
-                }
-                event.preventDefault();
-                return false;
-            }); 
-        }); 
-        </script>
         <script type="module">
         import NumericText from 'https://cdn.jsdelivr.net/gh/igarinpiano/numeric-text-animation/src/index.js';
         window.NumericText = NumericText;
