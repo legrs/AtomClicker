@@ -1095,10 +1095,12 @@ document.addEventListener('mousemove',(event) => { //説明が画面の外に出
 })
 document.addEventListener('keydown', keydownEvent);
 
-let lastTick = performance.now();
+let lastTick = Date.now();
 setInterval(() => {
-    let now = performance.now();
-    let sec = Math.min((now - lastTick) / 1000, 60); //setIntervalは裏タブだとサボるので経った時間で数える(離席しすぎた分は60秒までに)
+    let now = Date.now();
+    //setIntervalは裏タブだとサボるので経った時間で数える。放置ゲーなので裏タブでもスリープでも経った分はまるごと入る
+    //(performance.nowはスリープ中に進まない環境があるのでDate.nowを使う。時計が巻き戻った時だけ0にする)
+    let sec = Math.max(now - lastTick,0) / 1000;
     lastTick = now;
     aps.forEach((value,index) => {
         AtoQtyArr[index] += value * sec;
