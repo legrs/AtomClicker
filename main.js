@@ -1267,8 +1267,9 @@ document.addEventListener('keydown',() =>{  //フォーカス不正をできな�
 document.oncontextmenu = function () { //右クリックメニューを出さない
 	return false;
 };
-document.addEventListener('mouseover',(element)=>{
-    FshowHoverInf(element);
+document.addEventListener('mouseover',(element)=>{ //NumericTextが中身をid無しのspanに置き換えるため、id持ちの祖先まで遡る
+    let target = element.target.closest('[id]');
+    FshowHoverInf(target ? {target} : element);
 });
 document.addEventListener('mousemove',(event) => { //説明が画面の外に出ないようにする
     if(event.pageY > window.innerHeight * (3 / 4)){
@@ -1287,13 +1288,13 @@ document.addEventListener('mousemove',(event) => { //説明が画面の外に出
         hoverInfHtm.style.left = `${event.pageX + 30}px`;   //マウスのみぎ
     }
 })
-setInterval(() => {
+setInterval(() => { //10ms間隔だとNumericTextのアニメーションが完了する前に次のsetで中断されて見えなくなるため500ms間隔にしている
     AtoQtyArr.forEach((value,index) => {
-        AtoQtyArr[index]+=aps[index]/100;
+        AtoQtyArr[index]+=aps[index]/2;
     });
-    Ene+=eps/100;
+    Ene+=eps/2;
     FSync();
-}, 10);
+}, 500);
 
 
 //document.addEventListener('keydown', keydownEvent,false);
