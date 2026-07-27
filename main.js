@@ -60,8 +60,8 @@ let InfBtnHtm = document.querySelector('#infomation'); //このサイトにつ�
 
 let AutAtoInnHtm = document.querySelector('#autoAtomScr');  //自動生産の本体
 let AutEneInnHtm = document.querySelector('#autoEnergyScr');
-let apsHtm = document.querySelector('#ApS');
-let epsHtm = document.querySelector('#EpS');
+let apsHtm = document.querySelector('#ApSNum');
+let epsHtm = document.querySelector('#EpSNum');
 let toridasiHtm = document.querySelector('#toridasi');
 let disSelectHtm = document.querySelector('#disSelect'); 
 
@@ -128,6 +128,15 @@ document.querySelector('#N'),
 document.querySelector('#O'),
 document.querySelector('#F'),
 document.querySelector('#Ne')];
+
+let AtoQtyNt = new NumericText(AtoQtyHtm,{type:'string'});         //合計元素数(数字アニメーション)
+let ApSNt = new NumericText(apsHtm,{type:'string'});
+let EpSNt = new NumericText(epsHtm,{type:'string'});
+let EneNt = new NumericText(EneHtm,{type:'string',suf:'E'});
+let PneQtyNtArr = PneQtyArrHtm.map((value) => new NumericText(value,{type:'string'}));
+let AtoQtyNtArr = AtoQtyArrHtm.map((value) => new NumericText(value,{type:'string'}));
+let AutAtoQtyNtArr = AutAtoQtyArrHtm.map((value) => new NumericText(value,{type:'string'}));
+let AutEneQtyNtArr = AutEneQtyArrHtm.map((value) => new NumericText(value,{type:'string'}));
 
 const AtoArr     =    ['H','He','Li','Be','B','C','N','O','F','Ne']; //元素全部
 const AtoNamArr      =    ['水素','ヘリウム','リチウム','ベリリウム',' ホウ素','炭素','窒素','酸素','フッ素','ネオン'];
@@ -332,7 +341,7 @@ function FSel(element){ //選択
             });
             
             PneArrHtm.forEach((value,index) => {
-                if(value.id == element.target.id && PneQtyArrHtm[index].innerHTML != 0){
+                if(value.id == element.target.id && PneQtyArr[index] != 0){
                     console.log(value.id,PneQtyArrHtm[index]);
                     value.style.backgroundColor = "rgb(125, 225, 155)";
                     SelAtoNow = element.target.id;
@@ -377,15 +386,15 @@ function FSel(element){ //選択
     }
 }
 function FSync(){ //実際の数字とhtml表示を同期
-    AtoQtyHtm.innerHTML = FtoSI(FsumArr(AtoQtyArr),0);
-    AtoQtyArrHtm.forEach((value,index) => {
-        value.innerHTML = FtoSI(AtoQtyArr[index],0);
+    AtoQtyNt.set(FtoSI(FsumArr(AtoQtyArr),0));
+    AtoQtyNtArr.forEach((value,index) => {
+        value.set(FtoSI(AtoQtyArr[index],0));
     });
-    PneQtyArrHtm.forEach((value,index) => {
-        value.innerHTML = FtoSI(PneQtyArr[index],0);
+    PneQtyNtArr.forEach((value,index) => {
+        value.set(FtoSI(PneQtyArr[index],0));
     });
-    EneHtm.innerHTML = `${FtoSI(Ene,0)}E`;
-    
+    EneNt.set(FtoSI(Ene,0));
+
 }
 function FBac(){ //製作画面に戻る
     AutAtoHtm.style.display = 'none';
@@ -449,8 +458,8 @@ function FAutAtoclick(element){
                     aps[index] += Number(( apsQtyAutAto[AutAtoArr.indexOf(element.target.id)]).toFixed(1));
                 }
             });
-            AutAtoQtyArrHtm[AutAtoArr.indexOf(element.target.id)].innerHTML = FtoSI(AutAtoQtyArr[AutAtoArr.indexOf(element.target.id)],0);
-            apsHtm.innerHTML = `合計元素毎秒(ApS):${FtoSI(FsumArr(aps),1)}`;
+            AutAtoQtyNtArr[AutAtoArr.indexOf(element.target.id)].set(FtoSI(AutAtoQtyArr[AutAtoArr.indexOf(element.target.id)],0));
+            ApSNt.set(FtoSI(FsumArr(aps),1));
         }
         FshowHoverInf(element);
     }
@@ -484,8 +493,8 @@ function FAutEneclick(element){
             });
                 eps = Number((AutEneQtyArr[AutEneArr.indexOf(element.target.id)] * epsQtyAutEne[AutEneArr.indexOf(element.target.id)]).toFixed(1));
 
-            AutEneQtyArrHtm[AutEneArr.indexOf(element.target.id)].innerHTML = FtoSI(AutEneQtyArr[AutEneArr.indexOf(element.target.id)],0);
-            epsHtm.innerHTML = `エネルギー毎秒(EpS):${FtoSI(eps,1)}`;
+            AutEneQtyNtArr[AutEneArr.indexOf(element.target.id)].set(FtoSI(AutEneQtyArr[AutEneArr.indexOf(element.target.id)],0));
+            EpSNt.set(FtoSI(eps,1));
         }
         FshowHoverInf(element);
     }

@@ -23,8 +23,8 @@
             
             <button id="plusH">H</button>
         </div>
-        <h2 id="ApS">合計元素毎秒(ApS):0</h2>
-        <h2 id="EpS">エネルギー毎秒(EpS):0</h2>
+        <h2 id="ApS">合計元素毎秒(ApS):<span id="ApSNum">0</span></h2>
+        <h2 id="EpS">エネルギー毎秒(EpS):<span id="EpSNum">0</span></h2>
         <br>
     
         <div id="menu">
@@ -190,7 +190,7 @@
                 </tr>
                 <tr>
                     <td class="greentd">エネルギー(E)</td>
-                    <td id="ENum">0E</td>
+                    <td id="ENum">0</td>
                 </tr>
             </table>
         </div>
@@ -255,7 +255,11 @@
             }); 
         }); 
         </script>
-        <script src="main.js"></script>
+        <script type="module">
+        import NumericText from 'https://cdn.jsdelivr.net/gh/igarinpiano/numeric-text-animation/src/index.js';
+        window.NumericText = NumericText;
+        </script>
+        <script src="main.js" defer></script>
     </div>
     </body>
 </html>
