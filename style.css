@@ -44,6 +44,7 @@
     color: rgb(255, 255, 255);
     font-size: 7vh;
     margin-top: 2vh;
+    gap: 0.08em;
 }
 #ApS{
     position: absolute;
